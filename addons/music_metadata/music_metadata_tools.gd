@@ -524,7 +524,7 @@ static func bytes_from_audio(audio:AudioStream) -> PackedByteArray:
 		# unlike the other audio stream formats that have a data field.
 		# So this feild is actually the best primary source.
 		return audio.data
-	if (not audio.local_to_scene) and FileAccess.file_exists(audio.resource_path):
+	if FileAccess.file_exists(audio.resource_path):
 		return FileAccess.get_file_as_bytes(audio.resource_path)
 	if "data" in audio:
 		# Welp, try to work with what there is left in the data feild, even if it is truncated...

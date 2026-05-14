@@ -1,6 +1,7 @@
 @tool
 @icon("../icon.svg")
 extends Control
+class_name MusicMetadataUI
 
 ## The current [MusicMetadata] object being displayed at this time.
 @export var metadata:MusicMetadata:

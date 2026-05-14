@@ -254,7 +254,7 @@ func get_most_relevent_cover() -> ImageTexture:
 ## recursing through potentially nested meta-[AudioStreams].
 ## For more information on what is consitered an meta-[AudioStreams]
 ## and how these are unpacked, see [member MusicMetadataTools.flatten_meta_streams].
-static func from_audio_stream_unpacked(stream:AudioStream) -> Array[MusicMetadata]:
+static func from_audio_stream_unpacked(stream:AudioStream) -> Array:
 	return MusicMetadataTools.flatten_meta_streams(stream).map(MusicMetadata.new)
 
 ## Create a [MusicMetadata] [Resource].
