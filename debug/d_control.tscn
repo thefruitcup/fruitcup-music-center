@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://b8r2e72ypceq7"]
+
+[ext_resource type="Script" uid="uid://dg2k5bfgvtvvh" path="res://debug/d_load_music_folder.gd" id="1_5ou0f"]
+[ext_resource type="PackedScene" uid="uid://c2s0ruvq6381u" path="res://addons/music_metadata/ui/music_metadata_ui.tscn" id="2_cy2x1"]
+
+[node name="Control" type="Control" unique_id=654717401]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=453480484]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2777778
+anchor_top = 0.09876543
+anchor_right = 0.5512153
+anchor_bottom = 0.49845678
+offset_right = 325.0
+offset_bottom = 325.0
+metadata/_edit_use_anchors_ = true
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=1281295290]
+layout_mode = 2
+columns = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="." unique_id=1347421022]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.16666667
+anchor_bottom = 0.09876543
+text = "load music folder"
+script = ExtResource("1_5ou0f")
+metadata/_edit_use_anchors_ = true
+
+[node name="FileDialog" type="FileDialog" parent="Button" unique_id=1276784476]
+oversampling_override = 1.0
+title = "Open a Directory"
+file_mode = 2
+access = 2
+use_native_dialog = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=459935651]
+
+[node name="MusicMetadataUI" parent="." unique_id=605471210 instance=ExtResource("2_cy2x1")]
+layout_mode = 1
+mouse_filter = 2
