@@ -9,22 +9,26 @@ class_name WMCButton
 @export var fire_on_button_up : bool = false
 @export var label_settings : LabelSettings = LabelSettings.new()
 @export var extra_label_settings :LabelExtraSettings= LabelExtraSettings.new()
-@onready var label : Label
 @onready var viewport_container :SubViewportContainer
-
+@onready var viewport :SubViewport
+@onready var label : Label
 ##function should "func foo(hovered : bool, button : WMCButton) -> void"
 var button_hovered_function : Callable
 
 func _ready() -> void:
-	var vp :SubViewport= SubViewport.new()
+	#doing all of this so text can look how it does in WMC, as putting a gradient shader applies it on the font's texture
+	#not the text itself
+	#this does (fortunately?) give us that blurry look when we fullscreen the window though
+	viewport = SubViewport.new()
 	viewport_container =SubViewportContainer.new()
+	viewport_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
-	viewport_container.add_child(vp)
-	vp.render_target_clear_mode = SubViewport.CLEAR_MODE_ONCE
-	vp.render_target_update_mode = SubViewport.UPDATE_ONCE
-	vp.transparent_bg = true
+	viewport_container.add_child(viewport)
+	viewport.render_target_clear_mode = SubViewport.CLEAR_MODE_ALWAYS
+	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	viewport.transparent_bg = true
 	
-	vp.size = size
+	viewport.size = size
 	viewport_container.size = size
 	
 	label = Label.new()
@@ -43,7 +47,7 @@ func _ready() -> void:
 	add_theme_color_override("font_hover_color",Color.TRANSPARENT)
 	add_theme_color_override("font_pressed_color",Color.TRANSPARENT)
 	add_theme_color_override("font_outline_color",Color.TRANSPARENT)
-	viewport_container.add_child(label)
+	viewport.add_child(label)
 	add_child(viewport_container)
 	
 	wmc_set_disabled(disabled)

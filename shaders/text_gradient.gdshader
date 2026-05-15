@@ -1,17 +1,51 @@
 shader_type canvas_item;
+render_mode unshaded;
 
-uniform vec4 color1 :source_color = vec4(1, 0, 0,1); // RED
-uniform vec4 color2 :source_color= vec4(0, 0, 1,0.2); // BLUE
+/*
+This Shader is mix of 2 shaders.
+https://github.com/Zekiah-A/godot-text-gradient-shader
+[put other shader link here]
+*/ 
 
-void fragment() {
-	vec4 current_color = texture(TEXTURE, UV);
-	
-	float ratio = SCREEN_UV.x;
-	float iratio = (0.6 - SCREEN_UV.x);
-	
-	float new_r = color2.r * ratio + color1.r * iratio;
-	float new_g = color2.g * ratio + color1.g * iratio;
-	float new_b = color2.b * ratio + color1.b * iratio;
-	
-	COLOR = vec4(new_r, new_g, new_b, current_color.a);
+
+uniform float intensity;
+
+uniform bool x;
+uniform vec3 colorH :source_color;
+
+uniform bool y;
+uniform vec3 colorV :source_color;
+
+void fragment()
+{
+	float texture_alpha = texture(TEXTURE, UV).a;
+
+	if (texture_alpha > 0.0)
+	{
+		if (x == true)
+		{
+			float ratio = UV.s;
+			float iratio = (intensity - ratio);
+			
+			COLOR = vec4(
+				ratio * colorH.r + colorV.r * iratio,
+				ratio * colorH.g + colorV.g * iratio,
+				ratio * colorH.b + colorV.b * iratio,
+				texture_alpha
+			);
+		}
+		if (y == true)
+		{
+			COLOR = vec4(
+				UV.y * colorV.r * intensity,
+				UV.y * colorV.g * intensity,
+				UV.y * colorV.b * intensity,
+				texture_alpha
+			);
+		}
+	}
+	else
+	{ 
+		COLOR = texture(TEXTURE, UV);
+	}
 }

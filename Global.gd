@@ -9,7 +9,7 @@ var dirs_music_loaded :Dictionary[String,PackedStringArray]={}
 var all_music_files_loaded :PackedStringArray
 var audio : AudioStreamPlayer
 
-
+var current_track_path : String
 
 func _ready() -> void:
 	audio = AudioStreamPlayer.new()
@@ -19,6 +19,8 @@ func _ready() -> void:
 	
 	Console.enable_on_release_build = false
 	Console.add_command("play_audio",on_audio_file_clicked,["file"],1)
+	Console.add_command("reload",get_tree().reload_current_scene)
+
 
 func add_directory(dir_selected : String, files_in_dir : PackedStringArray) -> void:
 	if dir_selected in dirs_music_loaded.keys():
@@ -66,6 +68,11 @@ func on_audio_file_clicked(file : String) -> void:
 	else: metadata.stream = AudioStreamMP3.new() #doing this or else the program crashes due to no data for it to parse
 	
 	updated_metadata.emit(metadata,file.get_file().get_basename())
-
+	current_track_path = file
 	
 	audio.play()
+
+func get_formatted_time(time : float) -> String:
+	var minutes :float= time / 60
+	var seconds :float= fmod(time,60)
+	return "%02d:%02d" % [minutes,seconds]

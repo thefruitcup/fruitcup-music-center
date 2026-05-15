@@ -33,8 +33,9 @@ gdscript/warnings/unsafe_method_access=2
 
 [display]
 
+window/size/viewport_width=967
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_height"
+window/stretch/scale_mode="integer"
 
 [dotnet]
 

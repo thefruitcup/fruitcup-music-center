@@ -8,6 +8,7 @@ func _ready() -> void:
 	super()
 	
 	file_dialog.dir_selected.connect(dir_select)
+	Console.add_command("add_dir",dir_select,["dir"],1)
 
 func on_press() -> void:
 	file_dialog.popup_file_dialog()
