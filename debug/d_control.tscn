@@ -1,8 +1,59 @@
 [gd_scene format=3 uid="uid://b8r2e72ypceq7"]
 
 [ext_resource type="Script" uid="uid://dg2k5bfgvtvvh" path="res://debug/d_load_music_folder.gd" id="1_5ou0f"]
-[ext_resource type="Script" uid="uid://dvf6lmson84p7" path="res://scripts/music_grid_display.gd" id="1_m4snd"]
-[ext_resource type="Script" uid="uid://c4c646l4an6gb" path="res://scripts/display_control.gd" id="2_cy2x1"]
+[ext_resource type="Script" uid="uid://dvf6lmson84p7" path="res://scripts/frontend/music_grid_display.gd" id="1_m4snd"]
+[ext_resource type="Script" uid="uid://c4c646l4an6gb" path="res://scripts/frontend/display_control.gd" id="2_cy2x1"]
+[ext_resource type="Script" uid="uid://c548hcm2l0lic" path="res://scripts/backend/extra_label_settings_resource.gd" id="3_tkudv"]
+[ext_resource type="Material" uid="uid://dawdpb57ngxq" path="res://shaders/text_gradient_fade_into_background.material" id="4_8v665"]
+[ext_resource type="Script" uid="uid://ghcns8j0qrxk" path="res://scripts/frontend/timeline.gd" id="4_lrokg"]
+[ext_resource type="Script" uid="uid://bfecp06t5lc3q" path="res://scripts/class/wmc_button.gd" id="5_f4v3o"]
+
+[sub_resource type="SystemFont" id="SystemFont_lrokg"]
+font_names = PackedStringArray("Segoe UI")
+generate_mipmaps = true
+modulate_color_glyphs = true
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lrokg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f4v3o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tkudv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8v665"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m2tuh"]
+
+[sub_resource type="Theme" id="Theme_f4v3o"]
+default_font = SubResource("SystemFont_lrokg")
+Button/fonts/font = SubResource("SystemFont_lrokg")
+Button/styles/disabled = SubResource("StyleBoxEmpty_lrokg")
+Button/styles/focus = SubResource("StyleBoxEmpty_f4v3o")
+Button/styles/hover = SubResource("StyleBoxEmpty_tkudv")
+Button/styles/normal = SubResource("StyleBoxEmpty_8v665")
+Button/styles/pressed = SubResource("StyleBoxEmpty_m2tuh")
+
+[sub_resource type="Gradient" id="Gradient_tkudv"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8v665"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_tkudv")
+width = 4
+height = 4
+fill_to = Vector2(1, 0.15811966)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lrokg"]
+shadow_color = Color(0, 0, 0, 0.08235294)
+shadow_offset = Vector2(1, 1.54)
+
+[sub_resource type="Resource" id="Resource_8v665"]
+script = ExtResource("3_tkudv")
+normal = Color(0.26666668, 0.49019608, 1, 1)
+disable = Color(0, 0, 0.30588236, 1)
+metadata/_custom_type_script = "uid://c548hcm2l0lic"
+
+[sub_resource type="LabelSettings" id="LabelSettings_tkudv"]
 
 [node name="Control" type="Control" unique_id=654717401]
 layout_mode = 3
@@ -11,22 +62,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_f4v3o")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=453480484]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.09876543
-anchor_right = 0.7178819
-anchor_bottom = 0.32561728
-offset_right = 325.0
-offset_bottom = 325.0
+anchor_top = 0.32098764
+anchor_right = 1.0
+anchor_bottom = 0.5555556
+offset_bottom = -3.0517578e-05
 script = ExtResource("1_m4snd")
 metadata/_edit_use_anchors_ = true
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=1281295290]
 layout_mode = 2
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 8
 columns = 5
 metadata/_edit_use_anchors_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="ScrollContainer" unique_id=1554832533]
+position = Vector2(192, 64)
+scale = Vector2(5.375, 1)
+texture = SubResource("GradientTexture2D_8v665")
 
 [node name="Button" type="Button" parent="." unique_id=1347421022]
 layout_mode = 1
@@ -35,6 +93,8 @@ anchor_right = 0.16666667
 anchor_bottom = 0.09876543
 text = "load music folder"
 script = ExtResource("1_5ou0f")
+label_settings = SubResource("LabelSettings_lrokg")
+extra_label_settings = SubResource("Resource_8v665")
 metadata/_edit_use_anchors_ = true
 
 [node name="FileDialog" type="FileDialog" parent="Button" unique_id=1276784476]
@@ -45,22 +105,27 @@ access = 2
 use_native_dialog = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=459935651]
+playback_type = 1
 
 [node name="Label" type="Label" parent="." unique_id=1377662405]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.11111111
 anchor_top = 0.86419755
 anchor_right = 0.3628472
 anchor_bottom = 0.97530866
 offset_right = -34.0
 text = "ffffffffffffffffffffffffffffffffffffffffffffffffff"
+label_settings = SubResource("LabelSettings_tkudv")
 script = ExtResource("2_cy2x1")
 metadata/_edit_use_anchors_ = true
 
 [node name="timeline" type="HScrollBar" parent="Label" unique_id=1032529267]
+visible = false
 layout_mode = 0
 offset_top = -8.0
 offset_right = 288.0
+script = ExtResource("4_lrokg")
 
 [node name="pause" type="Button" parent="Label" unique_id=2128247712]
 layout_mode = 1
@@ -69,6 +134,10 @@ anchor_top = -0.7777778
 anchor_right = 0.13793103
 anchor_bottom = -0.22222222
 text = "||"
+script = ExtResource("5_f4v3o")
+fire_on_button_down = false
+label_settings = SubResource("LabelSettings_lrokg")
+extra_label_settings = SubResource("Resource_8v665")
 metadata/_edit_use_anchors_ = true
 
 [node name="stop" type="Button" parent="Label" unique_id=157801093]
@@ -79,6 +148,10 @@ anchor_top = -0.7777778
 anchor_right = 0.3034483
 anchor_bottom = -0.22222222
 text = "[ ]"
+script = ExtResource("5_f4v3o")
+fire_on_button_down = false
+label_settings = SubResource("LabelSettings_lrokg")
+extra_label_settings = SubResource("Resource_8v665")
 metadata/_edit_use_anchors_ = true
 
 [node name="skipForward" type="Button" parent="Label" unique_id=1293916593]
@@ -89,6 +162,10 @@ anchor_top = -0.7777778
 anchor_right = 0.46896553
 anchor_bottom = -0.22222222
 text = ">"
+script = ExtResource("5_f4v3o")
+fire_on_button_down = false
+label_settings = SubResource("LabelSettings_lrokg")
+extra_label_settings = SubResource("Resource_8v665")
 metadata/_edit_use_anchors_ = true
 
 [node name="skipBack" type="Button" parent="Label" unique_id=650340941]
@@ -99,4 +176,23 @@ anchor_top = -0.7777778
 anchor_right = 0.63448274
 anchor_bottom = -0.22222222
 text = "<"
+script = ExtResource("5_f4v3o")
+fire_on_button_down = false
+label_settings = SubResource("LabelSettings_lrokg")
+extra_label_settings = SubResource("Resource_8v665")
 metadata/_edit_use_anchors_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=873614110]
+material = ExtResource("4_8v665")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1333637875]
+transparent_bg = true
+size = Vector2i(60, 20)
+
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport" unique_id=1538716249]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "hello"

@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://b8r2e72ypceq7"]
+
+[ext_resource type="Script" uid="uid://dg2k5bfgvtvvh" path="res://debug/d_load_music_folder.gd" id="1_5ou0f"]
+[ext_resource type="Script" uid="uid://dvf6lmson84p7" path="res://scripts/music_grid_display.gd" id="1_m4snd"]
+[ext_resource type="Script" uid="uid://c4c646l4an6gb" path="res://scripts/display_control.gd" id="2_cy2x1"]
+[ext_resource type="Script" uid="uid://ghcns8j0qrxk" path="res://scripts/timeline.gd" id="4_lrokg"]
+
+[node name="Control" type="Control" unique_id=654717401]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=453480484]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.30864197
+anchor_right = 0.7178819
+anchor_bottom = 0.041666668
+offset_right = 325.0
+offset_bottom = 325.0
+script = ExtResource("1_m4snd")
+metadata/_edit_use_anchors_ = true
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=1281295290]
+layout_mode = 2
+columns = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="." unique_id=1347421022]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.16666667
+anchor_bottom = 0.09876543
+text = "load music folder"
+script = ExtResource("1_5ou0f")
+metadata/_edit_use_anchors_ = true
+
+[node name="FileDialog" type="FileDialog" parent="Button" unique_id=1276784476]
+oversampling_override = 1.0
+title = "Open a Directory"
+file_mode = 2
+access = 2
+use_native_dialog = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=459935651]
+
+[node name="Label" type="Label" parent="." unique_id=1377662405]
+layout_mode = 0
+anchor_left = 0.11111111
+anchor_top = 0.86419755
+anchor_right = 0.3628472
+anchor_bottom = 0.97530866
+offset_right = -34.0
+text = "ffffffffffffffffffffffffffffffffffffffffffffffffff"
+script = ExtResource("2_cy2x1")
+metadata/_edit_use_anchors_ = true
+
+[node name="timeline" type="HScrollBar" parent="Label" unique_id=1032529267]
+visible = false
+layout_mode = 0
+offset_top = -8.0
+offset_right = 288.0
+script = ExtResource("4_lrokg")
+
+[node name="pause" type="Button" parent="Label" unique_id=2128247712]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.7777778
+anchor_right = 0.13793103
+anchor_bottom = -0.22222222
+text = "||"
+metadata/_edit_use_anchors_ = true
+
+[node name="stop" type="Button" parent="Label" unique_id=157801093]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16551724
+anchor_top = -0.7777778
+anchor_right = 0.3034483
+anchor_bottom = -0.22222222
+text = "[ ]"
+metadata/_edit_use_anchors_ = true
+
+[node name="skipForward" type="Button" parent="Label" unique_id=1293916593]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.33103448
+anchor_top = -0.7777778
+anchor_right = 0.46896553
+anchor_bottom = -0.22222222
+text = ">"
+metadata/_edit_use_anchors_ = true
+
+[node name="skipBack" type="Button" parent="Label" unique_id=650340941]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.49655172
+anchor_top = -0.7777778
+anchor_right = 0.63448274
+anchor_bottom = -0.22222222
+text = "<"
+metadata/_edit_use_anchors_ = true

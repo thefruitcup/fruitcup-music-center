@@ -1,13 +1,12 @@
-extends Button
+extends WMCButton
 
 @onready var file_dialog :FileDialog= get_node("FileDialog")
 @onready var grid :GridContainer= get_parent().get_node("ScrollContainer/GridContainer")
 @onready var audio :AudioStreamPlayer= get_parent().get_node("AudioStreamPlayer")
-@onready var label :Label= get_parent().get_node("Label")
-
 
 func _ready() -> void:
-	button_down.connect(on_press)
+	super()
+	
 	file_dialog.dir_selected.connect(dir_select)
 
 func on_press() -> void:
