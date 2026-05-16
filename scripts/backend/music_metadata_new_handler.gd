@@ -1,5 +1,5 @@
 #Taken from mp3player by Jokka39
-#https://github.com/jokka39/mp3player/tree/main
+#https://github.com/jokka39/mp3player
 #The MIT License (MIT)
 #Copyright © 2024 Pylyp Shevchenko
 #Permission is hereby granted, free of charge, to any person obtaining a copy of this software and 

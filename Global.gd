@@ -10,6 +10,7 @@ var all_music_files_loaded :PackedStringArray
 var audio : AudioStreamPlayer
 
 var current_track_path : String
+var shuffle_queue :PackedStringArray
 
 func _ready() -> void:
 	audio = AudioStreamPlayer.new()
@@ -20,6 +21,7 @@ func _ready() -> void:
 	Console.enable_on_release_build = false
 	Console.add_command("play_audio",on_audio_file_clicked,["file"],1)
 	Console.add_command("reload",get_tree().reload_current_scene)
+	UserPrefs.load_config()
 
 
 func add_directory(dir_selected : String, files_in_dir : PackedStringArray) -> void:
@@ -48,8 +50,26 @@ func update_all_music_files_loaded() -> void:
 	
 	for key : String in dirs_music_loaded:
 		all_music_files_loaded.append_array(dirs_music_loaded[key])
+	
+	all_music_files_loaded.sort()
+
+func get_metadata() -> MP3ID3Tag:
+	if current_track_path.is_empty(): return null
+	
+	var metadata  :MP3ID3Tag= MP3ID3Tag.new()
+	
+	if audio.stream is AudioStreamMP3:
+		metadata.stream = audio.stream
+	else:
+		metadata.stream = AudioStreamMP3.new()
+	
+	
+	updated_metadata.emit(metadata,current_track_path.get_file().get_basename())
+	return metadata
 
 func on_audio_file_clicked(file : String) -> void:
+	if file.is_empty(): return
+	
 	var is_mp3 : bool = false
 	
 	match file.get_extension():

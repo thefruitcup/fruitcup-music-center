@@ -2,7 +2,6 @@ extends WMCButton
 
 @onready var file_dialog :FileDialog= get_node("FileDialog")
 @onready var grid :GridContainer= get_parent().get_node("ScrollContainer/GridContainer")
-@onready var audio :AudioStreamPlayer= get_parent().get_node("AudioStreamPlayer")
 
 func _ready() -> void:
 	super()

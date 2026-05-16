@@ -11,7 +11,9 @@ config_version=5
 [application]
 
 config/name="fruitcup music center"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Fruitcup Media Center"
+config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 run/max_fps=30
 boot_splash/show_image=false
 boot_splash/use_filter=false
@@ -20,8 +22,9 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*uid://bk6wwtmbwelt6"
-MusicMetaHandler="*uid://dm1o5qdvemki8"
 Console="*uid://ouiu5xh1cs8n"
+UserPrefs="*uid://dae72vv6c06v5"
+MetadataHandler="*uid://domon6ubs1t3i"
 
 [debug]
 
@@ -33,9 +36,11 @@ gdscript/warnings/unsafe_method_access=2
 
 [display]
 
-window/size/viewport_width=967
+window/size/viewport_width=916
+window/size/viewport_height=515
+window/energy_saving/keep_screen_on=false
+window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
-window/stretch/scale_mode="integer"
 
 [dotnet]
 
@@ -47,7 +52,8 @@ enabled=PackedStringArray("res://addons/console/plugin.cfg", "res://addons/scrip
 
 [physics]
 
-3d/physics_engine="Jolt Physics"
+2d/physics_engine="Dummy"
+3d/physics_engine="Dummy"
 
 [rendering]
 

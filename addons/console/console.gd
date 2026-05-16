@@ -346,6 +346,14 @@ func print_info(text : Variant, print_godot := false) -> void:
 		text = str(text)
 	print_line("	   [color=light_blue]INFO:[/color] %s" % text, print_godot)
 
+func print_multiple(...text : Array[Variant]):
+	for i : Variant in text:
+		if i is not String:
+			i = str(i)
+		
+		rich_label.append_text(i)
+	
+	rich_label.append_text("\n")
 
 func print_warning(text : Variant, print_godot := false) -> void:
 	if not text is String:
