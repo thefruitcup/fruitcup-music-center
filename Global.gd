@@ -1,7 +1,7 @@
 extends Node
 
 signal updated_directories
-signal updated_metadata(data : MP3ID3Tag, default_title : String)
+signal updated_metadata(data : MetadataResource, default_title : String)
 const SUPPORTED_FORMATS :Array[String]= ["ogg","wav","mp3"]
 const PATH_META_STRING :String= "PATH"
 
@@ -53,16 +53,15 @@ func update_all_music_files_loaded() -> void:
 	
 	all_music_files_loaded.sort()
 
-func get_metadata() -> MP3ID3Tag:
+func get_metadata() -> MetadataHandler:
 	if current_track_path.is_empty(): return null
 	
-	var metadata  :MP3ID3Tag= MP3ID3Tag.new()
+	var data :Dictionary[StringName,Variant]= MetadataHandler.call("GetMetadata",current_track_path)
+	var metadata :MetadataResource= MetadataResource.new()
 	
-	if audio.stream is AudioStreamMP3:
-		metadata.stream = audio.stream
-	else:
-		metadata.stream = AudioStreamMP3.new()
-	
+	metadata.artists = data.get("artists",[])
+	metadata.album = data.get("album","")
+	metadata.title = data.get("title","")
 	
 	updated_metadata.emit(metadata,current_track_path.get_file().get_basename())
 	return metadata
@@ -70,22 +69,20 @@ func get_metadata() -> MP3ID3Tag:
 func on_audio_file_clicked(file : String) -> void:
 	if file.is_empty(): return
 	
-	var is_mp3 : bool = false
-	
 	match file.get_extension():
 		"ogg":
 			audio.stream = AudioStreamOggVorbis.load_from_file(file)
 		"mp3":
 			audio.stream = AudioStreamMP3.load_from_file(file)
-			is_mp3 = true
-			
 		"wav":
 			audio.stream = AudioStreamWAV.load_from_file(file)
 	
-	#musicmeta only supports MP3
-	var metadata  :MP3ID3Tag= MP3ID3Tag.new()
-	if is_mp3: metadata.stream = audio.stream
-	else: metadata.stream = AudioStreamMP3.new() #doing this or else the program crashes due to no data for it to parse
+	var data :Dictionary[StringName,Variant]= MetadataHandler.call("GetMetadata",file)
+	var metadata :MetadataResource= MetadataResource.new()
+	
+	metadata.artists = data.get("artists",[])
+	metadata.album = data.get("album","")
+	metadata.title = data.get("title","")
 	
 	updated_metadata.emit(metadata,file.get_file().get_basename())
 	current_track_path = file

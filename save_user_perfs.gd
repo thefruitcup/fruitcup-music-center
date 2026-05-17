@@ -6,6 +6,8 @@ const MAIN_WINDOW_STRING :String= "window_prefs"
 const MAIN_MUSIC_STRING :String= "music_prefs"
 var config : ConfigFile = ConfigFile.new()
 
+var first_time : bool = true
+
 func _exit_tree() -> void:
 	save_config()
 
@@ -22,6 +24,7 @@ func save_config() -> void:
 	config.set_value(MAIN_MUSIC_STRING, "dirs", Global.dirs_music_loaded.keys())
 	config.set_value(MAIN_MUSIC_STRING,"song_playing",Global.current_track_path)
 	config.set_value(MAIN_MUSIC_STRING,"song_position", Global.audio.get_playback_position())
+	config.set_value(MAIN_MUSIC_STRING,"volume", AudioServer.get_bus_volume_db(0))
 	
 	config.save(CONFIG_PATH)
 
@@ -43,7 +46,9 @@ func load_config() -> void:
 	for dir : String in config.get_value(MAIN_MUSIC_STRING, "dirs", []):
 		Global.add_directory(dir,DirAccess.get_files_at(dir))
 	
+	AudioServer.set_bus_volume_db(0,config.get_value(MAIN_MUSIC_STRING,"volume",0))
+	
 	Global.on_audio_file_clicked(config.get_value(MAIN_MUSIC_STRING,"song_playing",""))
 	Global.audio.seek(config.get_value(MAIN_MUSIC_STRING,"song_position",0))
 	Global.audio.stream_paused = true
-	
+	first_time = false

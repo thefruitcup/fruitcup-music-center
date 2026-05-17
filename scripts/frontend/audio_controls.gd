@@ -8,6 +8,8 @@ const RESTART_MUSIC_TIME :float= 2
 @onready var skipF_btn :Button= get_node("skipForward")
 @onready var skipB_btn :Button= get_node("skipBack")
 @onready var shuffle_btn :Button= get_node("shuffle")
+@onready var volume_up_btn :Button= get_node("volumeup")
+@onready var volume_down_btn :Button= get_node("volumedown")
 
 var is_shuffle_enabled : bool = false
 
@@ -17,6 +19,8 @@ func _ready() -> void:
 	skipF_btn.button_down.connect(skip)
 	skipB_btn.button_down.connect(skip.bind(true))
 	shuffle_btn.toggled.connect(shuffle)
+	volume_up_btn.button_down.connect(volume_up)
+	volume_down_btn.button_down.connect(volume_down)
 	
 	#dumb way to go to the next song, but works for now
 	Global.audio.finished.connect(skip)
@@ -71,6 +75,9 @@ func shuffle_skip(backward : bool = false) -> void:
 			if idx < 0: idx = Global.all_music_files_loaded.size() - 1
 		
 		Global.on_audio_file_clicked(Global.shuffle_queue[idx])
+
+func volume_up() -> void:AudioServer.set_bus_volume_db(0,min(6,AudioServer.get_bus_volume_db(0) + 1))
+func volume_down() -> void:AudioServer.set_bus_volume_db(0,max(-80,AudioServer.get_bus_volume_db(0) - 1))
 
 func shuffle(value : bool) -> void:
 	is_shuffle_enabled = value

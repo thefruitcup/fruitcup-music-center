@@ -1,4 +1,5 @@
 extends WMCButton
+class_name TransitionButton
 
 @export var transition_from : Control
 @export var transition_to : Control

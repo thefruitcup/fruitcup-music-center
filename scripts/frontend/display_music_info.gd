@@ -17,14 +17,21 @@ func _ready() -> void:
 
 #NOTE: MP3ID3Tag isn't great at getting album and artist name despite WMC getting it right.
 #Other Music Metadata Addons aren't great either due to being undocumented or outdated.
-func get_metadata(data : MP3ID3Tag, default_title : String) -> void:
-	var title :String= data.getTrackName()
-	var artist :String= data.getArtist()
-	var album :String= data.getAlbum()
+func get_metadata(data : MetadataResource, default_title : String) -> void:
+	var title :String= data.title
+	var artists :PackedStringArray= data.artists
+	var album :String= data.album
+	var artist_full : String = ""
+	
+	var artist_index :int= 0
+	for artist : String in artists:
+		artist_full += artist + (" " if artist_index <= 1 || artist_index >= artists.size() - 1 else ", ")
+		artist_index += 1
+	
 	
 	current_metadata["title"] = (title if !title.is_empty() else default_title)
 	current_metadata["album"] = (album if !album.is_empty() else "")
-	current_metadata["artist"] = (artist if !artist.is_empty() else UNKNOWN_ARTIST)
+	current_metadata["artist"] = (artist_full if !artist_full.is_empty() else UNKNOWN_ARTIST)
 	
 
 

@@ -44,7 +44,7 @@ func update_grid() -> void:
 
 func _on_batch_creation_timer_timeout() -> void:
 	for index : int in 16:
-		if last_index_load >= Global.all_music_files_loaded.size() - 1:
+		if last_index_load >= max(1,Global.all_music_files_loaded.size() - 1):
 			break
 		
 		var file :String= Global.all_music_files_loaded[last_index_load]

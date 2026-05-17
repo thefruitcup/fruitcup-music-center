@@ -10,6 +10,7 @@ class_name WMCButton
 @export var label_settings : LabelSettings = LabelSettings.new()
 @export var extra_label_settings :LabelExtraSettings= LabelExtraSettings.new()
 @export var texture : Texture
+@export var viewport_padding :Vector2= Vector2.ZERO
 @onready var viewport_container :SubViewportContainer
 @onready var viewport :SubViewport
 @onready var label : Label
@@ -44,8 +45,8 @@ func _create_label_viewport() -> void:
 	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	viewport.transparent_bg = true
 	
-	viewport.size = size
-	viewport_container.size = size
+	viewport.size = size + viewport_padding
+	viewport_container.size = size + viewport_padding
 	
 	label = Label.new()
 	label.set_anchors_preset(Control.PRESET_FULL_RECT)

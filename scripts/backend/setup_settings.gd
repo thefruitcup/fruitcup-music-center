@@ -51,3 +51,6 @@ func remove_directory() -> void:
 func dir_select(dir_selected : String) -> void:
 	Global.add_directory(dir_selected, DirAccess.get_files_at(dir_selected))
 	update_display()
+
+func _on_bugreport_button_down() -> void:
+	OS.shell_open("https://github.com/thefruitcup/fruitcup-music-center/issues")
