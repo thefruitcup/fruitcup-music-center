@@ -1,0 +1,7 @@
+[gd_resource type="SystemFont" format=3 uid="uid://4vqd5rv0bnsn"]
+
+[resource]
+font_names = PackedStringArray("Segoe UI")
+generate_mipmaps = true
+modulate_color_glyphs = true
+subpixel_positioning = 0
