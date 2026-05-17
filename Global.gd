@@ -53,10 +53,10 @@ func update_all_music_files_loaded() -> void:
 	
 	all_music_files_loaded.sort()
 
-func get_metadata() -> MetadataHandler:
+func get_metadata() -> MetadataResource:
 	if current_track_path.is_empty(): return null
 	
-	var data :Dictionary[StringName,Variant]= MetadataHandler.call("GetMetadata",current_track_path)
+	var data :Dictionary[StringName,Variant]= MetadataHandler.GetMetadata(current_track_path)
 	var metadata :MetadataResource= MetadataResource.new()
 	
 	metadata.artists = data.get("artists",[])
@@ -78,7 +78,7 @@ func on_audio_file_clicked(file : String) -> void:
 		"wav":
 			audio.stream = AudioStreamWAV.load_from_file(file)
 	
-	var data :Dictionary[StringName,Variant]= MetadataHandler.call("GetMetadata",file)
+	var data :Dictionary[StringName,Variant]= MetadataHandler.GetMetadata(file)
 	var metadata :MetadataResource= MetadataResource.new()
 	
 	metadata.artists = data.get("artists",[])

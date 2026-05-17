@@ -25,7 +25,6 @@ config/icon="res://icon.svg"
 Global="*uid://bk6wwtmbwelt6"
 Console="*uid://ouiu5xh1cs8n"
 UserPrefs="*uid://dae72vv6c06v5"
-MetadataHandler="*uid://domon6ubs1t3i"
 
 [debug]
 
@@ -59,3 +58,5 @@ enabled=PackedStringArray("res://addons/console/plugin.cfg", "res://addons/scrip
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

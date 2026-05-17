@@ -405,6 +405,7 @@ script = ExtResource("10_0odxb")
 [node name="pause" type="Button" parent="main/audio_controls" unique_id=2128247712]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+tooltip_text = "Resume/Pause"
 text = "||"
 script = ExtResource("11_lswn8")
 fire_on_button_down = false
@@ -415,6 +416,7 @@ metadata/_edit_use_anchors_ = true
 [node name="stop" type="Button" parent="main/audio_controls" unique_id=157801093]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+tooltip_text = "Stop"
 text = "[ ]"
 script = ExtResource("11_lswn8")
 fire_on_button_down = false
@@ -425,6 +427,7 @@ metadata/_edit_use_anchors_ = true
 [node name="skipForward" type="Button" parent="main/audio_controls" unique_id=1293916593]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+tooltip_text = "Next Track"
 text = ">"
 script = ExtResource("11_lswn8")
 fire_on_button_down = false
@@ -435,6 +438,7 @@ metadata/_edit_use_anchors_ = true
 [node name="skipBack" type="Button" parent="main/audio_controls" unique_id=650340941]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+tooltip_text = "Previous Track"
 text = "<"
 script = ExtResource("11_lswn8")
 fire_on_button_down = false
@@ -445,6 +449,7 @@ metadata/_edit_use_anchors_ = true
 [node name="shuffle" type="Button" parent="main/audio_controls" unique_id=726832527]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+tooltip_text = "Shuffle"
 theme_override_colors/font_focus_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 0)
 toggle_mode = true
@@ -458,6 +463,7 @@ metadata/_edit_use_anchors_ = true
 [node name="volumeup" type="Button" parent="main/audio_controls" unique_id=21623615]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+tooltip_text = "Volume Up"
 text = "+"
 script = ExtResource("11_lswn8")
 fire_on_button_down = false
@@ -468,6 +474,7 @@ metadata/_edit_use_anchors_ = true
 [node name="volumedown" type="Button" parent="main/audio_controls" unique_id=1299734792]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+tooltip_text = "Volume Down"
 text = "-"
 script = ExtResource("11_lswn8")
 fire_on_button_down = false
