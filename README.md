@@ -14,7 +14,7 @@ A Windows Media Center Inspired Music Player created in Godot 4
   <li>Windows 10+ 64 bit</li>
   <li>Any GPU that runs Direct3D 12 or has full Vulkan Support</li>
   <li>430+ MB of RAM (Tested with 1184 Music Tracks)</li>
-  <li>150 MB of Storage</li>
+  <li>180 MB of Storage</li>
 </ul>
 
 *Linux Requirements are most likely the same.*
