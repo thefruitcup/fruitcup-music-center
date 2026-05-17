@@ -3,11 +3,15 @@ extends Label
 const UNKNOWN_ARTIST :String= "Unknown Artist"
 
 @onready var timeline :HScrollBar= get_node("timeline")
+@onready var cover_art_tex_rect :TextureRect= get_node("../cover_art")
+
+var update_cover_art :bool= false
 
 var current_metadata :Dictionary[String,String] = {
 	"title": "",
 	"album": "",
-	"artist": ""
+	"artist": "",
+	"art": ""
 }
 
 func _ready() -> void:
@@ -22,17 +26,18 @@ func get_metadata(data : MetadataResource, default_title : String) -> void:
 	var artists :PackedStringArray= data.artists
 	var album :String= data.album
 	var artist_full : String = ""
+	var art :String= "" if data.art.size() <= 0 else data.art[0]
 	
 	var artist_index :int= 0
 	for artist : String in artists:
 		artist_full += artist + (" " if artist_index <= 1 || artist_index >= artists.size() - 1 else ", ")
 		artist_index += 1
 	
-	
 	current_metadata["title"] = (title if !title.is_empty() else default_title)
 	current_metadata["album"] = (album if !album.is_empty() else "")
 	current_metadata["artist"] = (artist_full if !artist_full.is_empty() else UNKNOWN_ARTIST)
-	
+	current_metadata["art"] = art
+	update_cover_art = false
 
 
 func update_display() -> void:
@@ -40,6 +45,9 @@ func update_display() -> void:
 		text = ""
 		return
 	
+	if !update_cover_art && !current_metadata["art"].is_empty():
+		cover_art_tex_rect.texture = load(current_metadata["art"])
+		update_cover_art = true
 	
 	text = current_metadata["title"] + " " + Global.get_formatted_time(Global.audio.get_playback_position())
 	if !current_metadata["album"].is_empty(): text += "\n" + current_metadata["album"]

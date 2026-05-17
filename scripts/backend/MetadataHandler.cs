@@ -37,7 +37,9 @@ public partial class MetadataHandler : Node
         StringName title = tfile.Tag.Title;
         string[] u_artists = tfile.Tag.Artists;
         StringName album = tfile.Tag.Album;
+        IPicture[] u_cover_art = tfile.Tag.Pictures;
         Array<StringName> artists = new Array<StringName>();
+        //Array<StringName> cover_art = new Array<StringName>();
 
         metadata["title"] = title;
         metadata["album"] = album;
@@ -49,17 +51,15 @@ public partial class MetadataHandler : Node
             artists.Add(c_artist);
         }
 
+        // foreach(IPicture pic in u_cover_art)
+        // {
+        //     StringName c_art = pic.Filename;
+        //     cover_art.Add(c_art);
+        // }
+
         metadata["artists"] = artists;
+        //metadata["art"] = cover_art;
 
         return metadata;
     }
-
-    static public StringName TestFunction(StringName track)
-    {
-        var tfile = TagLib.File.Create(track);
-        StringName title = tfile.Tag.Title;
-
-        return title;
-    }
-
 }

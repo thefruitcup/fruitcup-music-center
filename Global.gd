@@ -62,6 +62,7 @@ func get_metadata() -> MetadataHandler:
 	metadata.artists = data.get("artists",[])
 	metadata.album = data.get("album","")
 	metadata.title = data.get("title","")
+	metadata.art = data.get("art",[])
 	
 	updated_metadata.emit(metadata,current_track_path.get_file().get_basename())
 	return metadata
@@ -83,6 +84,7 @@ func on_audio_file_clicked(file : String) -> void:
 	metadata.artists = data.get("artists",[])
 	metadata.album = data.get("album","")
 	metadata.title = data.get("title","")
+	metadata.art = data.get("art",[])
 	
 	updated_metadata.emit(metadata,file.get_file().get_basename())
 	current_track_path = file
