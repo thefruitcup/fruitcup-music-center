@@ -13,7 +13,7 @@ func _exit_tree() -> void:
 
 func save_config() -> void:
 	config.set_value(MAIN_WINDOW_STRING, "pos", get_window().position)
-	config.set_value(MAIN_WINDOW_STRING, "size", get_window().size)
+	#config.set_value(MAIN_WINDOW_STRING, "size", get_window().size)
 	config.set_value(MAIN_WINDOW_STRING, "mode", get_window().mode)
 	
 	if get_window().mode == Window.Mode.MODE_WINDOWED:
@@ -38,8 +38,8 @@ func load_config() -> void:
 	get_window().position = config.get_value(MAIN_WINDOW_STRING, "pos", get_window().position)
 	get_window().mode = config.get_value(MAIN_WINDOW_STRING, "mode", get_window().mode)
 	
-	if get_window().mode == Window.Mode.MODE_WINDOWED:
-		get_window().size = config.get_value(MAIN_WINDOW_STRING, "size", get_window().size)
+	#if get_window().mode == Window.Mode.MODE_WINDOWED:
+		#get_window().size = config.get_value(MAIN_WINDOW_STRING, "size", get_window().size)
 	
 	get_window().current_screen = config.get_value(MAIN_WINDOW_STRING, "screen", get_window().current_screen)
 	

@@ -231,6 +231,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_yaehf")
+metadata/_edit_use_anchors_ = true
 
 [node name="sine_wave_0" type="ColorRect" parent="TextureRect" unique_id=1242316710]
 material = SubResource("ShaderMaterial_m2tuh")
@@ -241,32 +242,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.07058824, 0.25882354, 0.47058824, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="sine_wave_1" type="ColorRect" parent="TextureRect" unique_id=491320773]
 modulate = Color(0.07058824, 0.25882354, 0.47058824, 1)
 material = SubResource("ShaderMaterial_w1tqm")
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.0019417476
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 1.0
-offset_bottom = 1.0
+anchor_bottom = 1.0019418
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.07058824, 0.25882354, 0.47058824, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="sine_wave_2" type="ColorRect" parent="TextureRect" unique_id=381588187]
 modulate = Color(0.07058824, 0.25882354, 0.47058824, 1)
 material = SubResource("ShaderMaterial_urpnq")
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = -0.025242718
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -13.0
-offset_bottom = -13.0
+anchor_bottom = 0.97475725
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.07058824, 0.25882354, 0.47058824, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect" unique_id=1341749170]
 libraries/ = SubResource("AnimationLibrary_j6d13")
@@ -284,36 +286,35 @@ grow_vertical = 2
 modulate = Color(1, 1, 1, 0.09411765)
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.54563105
+anchor_top = 0.62330115
 anchor_right = 1.0567685
-anchor_bottom = 0.8097087
-offset_top = 40.00009
-offset_bottom = 40.00009
+anchor_bottom = 0.8873788
 texture = SubResource("GradientTexture2D_w1tqm")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect3" type="TextureRect" parent="main" unique_id=1891481896]
 modulate = Color(1, 1, 1, 0.09411765)
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.03300953
-anchor_bottom = 0.03300953
+anchor_top = 0.11067961
+anchor_bottom = 0.11067961
 offset_left = 968.0
-offset_top = 176.00018
+offset_top = 136.00009
 offset_right = 1936.0
-offset_bottom = 312.00018
+offset_bottom = 272.0001
 rotation = 3.1415927
 texture = SubResource("GradientTexture2D_urpnq")
+metadata/_edit_use_anchors_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="main" unique_id=453480484]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.32098764
+anchor_top = 0.39865774
 anchor_right = 1.0
-anchor_bottom = 0.5941358
-offset_top = 40.00009
-offset_bottom = 40.00006
+anchor_bottom = 0.67180586
 script = ExtResource("4_cegan")
 extra_label_settings = SubResource("Resource_m2tuh")
+metadata/_edit_use_anchors_ = true
 
 [node name="GridContainer" type="GridContainer" parent="main/ScrollContainer" unique_id=1281295290]
 layout_mode = 2
@@ -349,6 +350,7 @@ anchor_bottom = 0.9225285
 texture = ExtResource("11_cegan")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="music_info" type="Label" parent="main" unique_id=1377662405]
 layout_mode = 1
@@ -372,11 +374,11 @@ script = ExtResource("8_d13ii")
 [node name="current_version" type="SubViewportContainer" parent="main" unique_id=873614110]
 material = ExtResource("9_1u8w0")
 layout_mode = 0
-offset_right = 256.0
-offset_bottom = 25.0
+anchor_right = 0.279476
+anchor_bottom = 0.048543688
 mouse_filter = 2
 stretch = true
-metadata/_edit_lock_ = true
+metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="main/current_version" unique_id=1333637875]
 transparent_bg = true
@@ -387,20 +389,24 @@ render_target_update_mode = 4
 
 [node name="Label" type="Label" parent="main/current_version/SubViewport" unique_id=1538716249]
 modulate = Color(1, 1, 1, 0.13725491)
-offset_right = 40.0
-offset_bottom = 23.0
+anchors_preset = -1
+anchor_right = 0.7890625
+anchor_bottom = 0.92
+offset_right = -162.0
 text = "fruitcup music center a0.1"
 metadata/_edit_lock_ = true
+metadata/_edit_use_anchors_ = true
 
 [node name="audio_controls" type="HBoxContainer" parent="main" unique_id=1508350416]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 0
-offset_left = 648.0
-offset_top = 473.0
-offset_right = 896.0
-offset_bottom = 505.0
+anchor_left = 0.70742357
+anchor_top = 0.9184466
+anchor_right = 0.9781659
+anchor_bottom = 0.98058254
 theme_override_constants/separation = 4
 script = ExtResource("10_0odxb")
+metadata/_edit_use_anchors_ = true
 
 [node name="pause" type="Button" parent="main/audio_controls" unique_id=2128247712]
 custom_minimum_size = Vector2(32, 32)

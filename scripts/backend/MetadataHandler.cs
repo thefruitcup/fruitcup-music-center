@@ -1,8 +1,7 @@
+using System.Linq;
 using Godot;
 using Godot.Collections;
 using Godot.NativeInterop;
-using System;
-using System.Linq;
 using TagLib;
 
 [GlobalClass]
@@ -39,7 +38,7 @@ public partial class MetadataHandler : Node
 		StringName album = tfile.Tag.Album;
 		IPicture[] u_cover_art = tfile.Tag.Pictures;
 		Array<StringName> artists = new Array<StringName>();
-		//Array<StringName> cover_art = new Array<StringName>();
+		Array<int> cover_art = new Array<int>();
 
 		metadata["title"] = title;
 		metadata["album"] = album;
@@ -51,14 +50,30 @@ public partial class MetadataHandler : Node
 			artists.Add(c_artist);
 		}
 
-		// foreach(IPicture pic in u_cover_art)
-		// {
-		//     StringName c_art = pic.Filename;
-		//     cover_art.Add(c_art);
-		// }
+		if(u_cover_art.Count() > 0)
+		{
+			//Note to self, Explicit Casts in C#
+			//causes GDScript to shit itself and not recognize this as a class anymore
+			//what is this frankenstein ass fucking engine bro
+			Picture pic = new Picture();
+			pic.Data = u_cover_art[0].Data;
+
+			ByteVector data = pic.Data;
+			Array<int> new_data = [.. data];
+
+			cover_art.Resize(6553600);
+			cover_art.Fill(0);
+
+			for(int idx = 0; idx < new_data.Count();idx++)
+			{
+				cover_art[idx] = new_data[idx];
+			}
+		}
 
 		metadata["artists"] = artists;
-		//metadata["art"] = cover_art;
+		metadata["art"] = cover_art;
+
+		GD.Print("Aaaaa");
 
 		return metadata;
 	}

@@ -73,8 +73,10 @@ func shuffle_skip(backward : bool = false) -> void:
 			
 			if idx > Global.all_music_files_loaded.size() - 1: idx = 0
 			if idx < 0: idx = Global.all_music_files_loaded.size() - 1
+			Global.on_audio_file_clicked(Global.all_music_files_loaded[idx])
+		else:
+			Global.on_audio_file_clicked(Global.shuffle_queue[idx])
 		
-		Global.on_audio_file_clicked(Global.shuffle_queue[idx])
 
 func volume_up() -> void:AudioServer.set_bus_volume_db(0,min(6,AudioServer.get_bus_volume_db(0) + 1))
 func volume_down() -> void:AudioServer.set_bus_volume_db(0,max(-80,AudioServer.get_bus_volume_db(0) - 1))
