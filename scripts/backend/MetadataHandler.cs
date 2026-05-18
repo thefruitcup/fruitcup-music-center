@@ -1,4 +1,6 @@
+using System;
 using System.Linq;
+using System.IO;
 using Godot;
 using Godot.Collections;
 using Godot.NativeInterop;
@@ -22,6 +24,7 @@ public partial class MetadataHandler : Node
 	*/
 
 	public static MetadataHandler Instance {get; private set;}
+	public static string APPDATA_PATH = System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData); 
 
 	public override void _Ready()
 	{
@@ -55,25 +58,23 @@ public partial class MetadataHandler : Node
 			//Note to self, Explicit Casts in C#
 			//causes GDScript to shit itself and not recognize this as a class anymore
 			//what is this frankenstein ass fucking engine bro
-			Picture pic = new Picture();
-			pic.Data = u_cover_art[0].Data;
+			var data = u_cover_art[0].Data.Data;
 
-			ByteVector data = pic.Data;
-			Array<int> new_data = [.. data];
+			//what the fuck? writing to a file worked, but trying to get godot to load the goddamn png with just bytes doesn't?
+			//either way, i've got no idea if this'd work on linux. i may have to disable support album covers if it doesn't
+			//as well, i can't believe i wrote Fruitcup Media Center instead of Fruitcup Music Center
+			//TODO: Add support for other image formats or find a way to convert them into PNGs
+			System.IO.File.WriteAllBytes(APPDATA_PATH + "/Fruitcup Media Center/" + "album.png",data);
 
-			cover_art.Resize(6553600);
-			cover_art.Fill(0);
 
-			for(int idx = 0; idx < new_data.Count();idx++)
-			{
-				cover_art[idx] = new_data[idx];
-			}
+			metadata["art"] = true;
+		}
+		else
+		{
+			metadata["art"] = false;
 		}
 
 		metadata["artists"] = artists;
-		metadata["art"] = cover_art;
-
-		GD.Print("Aaaaa");
 
 		return metadata;
 	}

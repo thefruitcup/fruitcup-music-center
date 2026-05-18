@@ -53,18 +53,18 @@ func update_all_music_files_loaded() -> void:
 	
 	all_music_files_loaded.sort()
 
-func get_metadata() -> MetadataResource:
-	if current_track_path.is_empty(): return null
+func get_metadata(file :String= current_track_path) -> MetadataResource:
+	if file.is_empty(): return null
 	
-	var data :Dictionary[StringName,Variant]= MetadataHandler.GetMetadata(current_track_path)
+	var data :Dictionary[StringName,Variant]= MetadataHandler.GetMetadata(file)
 	var metadata :MetadataResource= MetadataResource.new()
 	
 	metadata.artists = data.get("artists",[])
 	metadata.album = data.get("album","")
 	metadata.title = data.get("title","")
-	metadata.art = data.get("art",[])
+	metadata.art = data.get("art",false)
 	
-	updated_metadata.emit(metadata,current_track_path.get_file().get_basename())
+	updated_metadata.emit(metadata,file.get_file().get_basename())
 	return metadata
 
 func on_audio_file_clicked(file : String) -> void:
@@ -78,15 +78,7 @@ func on_audio_file_clicked(file : String) -> void:
 		"wav":
 			audio.stream = AudioStreamWAV.load_from_file(file)
 	
-	var data :Dictionary[StringName,Variant]= MetadataHandler.GetMetadata(file)
-	var metadata :MetadataResource= MetadataResource.new()
-	
-	metadata.artists = data.get("artists",[])
-	metadata.album = data.get("album","")
-	metadata.title = data.get("title","")
-	metadata.art = data.get("art",[])
-	
-	updated_metadata.emit(metadata,file.get_file().get_basename())
+	get_metadata(file)
 	current_track_path = file
 	
 	audio.play()

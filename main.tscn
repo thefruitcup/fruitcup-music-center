@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://b8r2e72ypceq7"]
 
-[ext_resource type="Texture2D" uid="uid://ctjyrgep0frwl" path="res://assets/textures/button_00.png" id="1_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://dcfvjgegfphmm" path="res://assets/textures/button_00.png" id="1_2cqfq"]
 [ext_resource type="SystemFont" uid="uid://4vqd5rv0bnsn" path="res://assets/misc/windows_font.tres" id="1_074og"]
 [ext_resource type="Script" uid="uid://benjtjhlxieh2" path="res://scripts/backend/handle_theme.gd" id="2_074og"]
-[ext_resource type="Texture2D" uid="uid://b1dj140fckdyp" path="res://assets/textures/background_00.png" id="2_yaehf"]
+[ext_resource type="Texture2D" uid="uid://tkf7f4de7qad" path="res://assets/textures/background_00.png" id="2_yaehf"]
 [ext_resource type="Shader" uid="uid://k12xpcn7wp3n" path="res://shaders/background_0.gdshader" id="3_074og"]
 [ext_resource type="Script" uid="uid://dvf6lmson84p7" path="res://scripts/frontend/music_grid_display.gd" id="4_cegan"]
 [ext_resource type="Script" uid="uid://c548hcm2l0lic" path="res://scripts/backend/extra_label_settings_resource.gd" id="5_82xsv"]
@@ -16,9 +16,9 @@
 [ext_resource type="Script" uid="uid://bfecp06t5lc3q" path="res://scripts/class/wmc_button.gd" id="11_lswn8"]
 [ext_resource type="Script" uid="uid://cfmshqdikgfw7" path="res://scripts/backend/setup_settings.gd" id="12_a6jrf"]
 [ext_resource type="Script" uid="uid://b67qi5f8c6s1" path="res://scripts/backend/first_time_setup.gd" id="13_xuqvo"]
-[ext_resource type="AudioStream" uid="uid://c1irl84tutmlq" path="res://assets/audio/fmc_startup.ogg" id="14_qsp4k"]
+[ext_resource type="AudioStream" uid="uid://d2uhed2bjxatl" path="res://assets/audio/fmc_startup.ogg" id="14_qsp4k"]
 [ext_resource type="Script" uid="uid://cow2o1esrju6q" path="res://scripts/visual/attribution_button.gd" id="15_kq58d"]
-[ext_resource type="Texture2D" uid="uid://gb2066eojkxi" path="res://assets/textures/icon_processed_no_tex.png" id="16_seu75"]
+[ext_resource type="Texture2D" uid="uid://3lrs4ccjpwjh" path="res://assets/textures/icon_processed_no_tex.png" id="16_seu75"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lrokg"]
 
@@ -340,7 +340,6 @@ transition_to = NodePath("../../settings")
 metadata/_edit_use_anchors_ = true
 
 [node name="cover_art" type="TextureRect" parent="main" unique_id=2136239040]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.026200874
