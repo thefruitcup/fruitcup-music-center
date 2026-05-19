@@ -12,7 +12,7 @@ A Windows Media Center Inspired Music Player created in Godot 4
 ### Minimal System Requirements
 <ul>
   <li>Windows 10+ 64 bit</li>
-  <li>Any GPU that runs Direct3D 12 or has full Vulkan Support</li>
+  <li>Any GPU that runs OpenGL</li>
   <li>430+ MB of RAM (Tested with 1184 Music Tracks)</li>
   <li>180 MB of Storage</li>
 </ul>
@@ -28,17 +28,18 @@ Linux Support will most likely be limited as I do not have Linux, but the progra
   <li>Directory Addition & Removal</li>
   <li>Music Information</li>
   <li>MP3, WAV & OGG Support</li>
+  <li>Now Playing Screen</li>
+  <li>Album Art & Default Album Art</li>
 </ul>
 
 ### To Be Added
 <ul>
   <li>Playlists</li>
-  <li>Music Screen</li>
-  <li>Album Art & Default Album Art</li>
   <li>Sorting (Artist, Genre, Title, Album, Length)</li>
   <li>Now Playing Queue</li>
   <li>Search</li>
   <li>(Maybe) Discogs Integration</li>
+  <li>Youtube Support (Retrieving Thumbnails)</li>
 </ul>
 
 # How to Compile
