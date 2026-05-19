@@ -82,6 +82,9 @@ func on_audio_file_clicked(file : String) -> void:
 	get_metadata(file)
 	current_track_path = file
 	
+	audio.volume_db = -80
+	create_tween().tween_property(audio,"volume_db",0,0.25)
+	
 	audio.play()
 
 func get_formatted_time(time : float) -> String:
