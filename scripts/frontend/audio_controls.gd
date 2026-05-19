@@ -11,8 +11,6 @@ const RESTART_MUSIC_TIME :float= 2
 @onready var volume_up_btn :Button= get_node("volumeup")
 @onready var volume_down_btn :Button= get_node("volumedown")
 
-var is_shuffle_enabled : bool = false
-
 func _ready() -> void:
 	pause_btn.button_down.connect(pause_audio)
 	stop_btn.button_down.connect(stop_audio)
@@ -26,7 +24,14 @@ func _ready() -> void:
 	Global.audio.finished.connect(skip)
 
 func pause_audio() -> void:
+	if !Global.audio.stream_paused:
+		var t :PropertyTweener= create_tween().tween_property(Global.audio,"volume_db",-80,0.25)
+		await  t.finished
+	else:
+		create_tween().tween_property(Global.audio,"volume_db",0,0.25)
+	
 	Global.audio.stream_paused = !Global.audio.stream_paused
+	
 
 func stop_audio() -> void: 
 	Global.audio.stop()
@@ -39,7 +44,7 @@ func skip(backward : bool = false) -> void:
 		Global.audio.seek(0)
 		return
 	
-	if is_shuffle_enabled:
+	if Global.is_shuffle_enabled:
 		shuffle_skip(backward)
 		return
 	
@@ -82,7 +87,7 @@ func volume_up() -> void:AudioServer.set_bus_volume_db(0,min(6,AudioServer.get_b
 func volume_down() -> void:AudioServer.set_bus_volume_db(0,max(-80,AudioServer.get_bus_volume_db(0) - 1))
 
 func shuffle(value : bool) -> void:
-	is_shuffle_enabled = value
+	Global.is_shuffle_enabled = value
 	
 	if !value: Global.shuffle_queue.clear()
 	else: Global.shuffle_queue.append(Global.current_track_path)

@@ -8,6 +8,13 @@ var config : ConfigFile = ConfigFile.new()
 
 var first_time : bool = true
 
+func _ready() -> void:
+	var timer :Timer= Timer.new()
+	timer.wait_time = 5
+	timer.autostart = true
+	timer.timeout.connect(save_config)
+	add_child(timer)
+
 func _exit_tree() -> void:
 	save_config()
 

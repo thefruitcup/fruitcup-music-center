@@ -37,7 +37,7 @@ public partial class MetadataHandler : Node
 
 		var tfile = TagLib.File.Create(track);
 		StringName title = tfile.Tag.Title;
-		string[] u_artists = tfile.Tag.Artists;
+		string[] u_artists = tfile.Tag.Performers;
 		StringName album = tfile.Tag.Album;
 		IPicture[] u_cover_art = tfile.Tag.Pictures;
 		Array<StringName> artists = new Array<StringName>();

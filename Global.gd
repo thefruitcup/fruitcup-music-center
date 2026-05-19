@@ -11,6 +11,7 @@ var audio : AudioStreamPlayer
 
 var current_track_path : String
 var shuffle_queue :PackedStringArray
+var is_shuffle_enabled : bool = false
 
 func _ready() -> void:
 	audio = AudioStreamPlayer.new()
@@ -87,7 +88,6 @@ func get_formatted_time(time : float) -> String:
 	var minutes :float= time / 60
 	var seconds :float= fmod(time,60)
 	return "%02d:%02d" % [minutes,seconds]
-
 
 #Disabling for now, works, but is a bit buggy
 #Code Taken From: 
