@@ -4,7 +4,13 @@ const CONFIG_PATH :String= "user://config.cfg"
 
 const MAIN_WINDOW_STRING :String= "window_prefs"
 const MAIN_MUSIC_STRING :String= "music_prefs"
+const MAIN_SETTINGS_STRING :String= "user_prefs"
+
 var config : ConfigFile = ConfigFile.new()
+
+var settings :Dictionary[String, Variant]= {
+	"use_metadata_title_for_buttons" = false
+}
 
 var first_time : bool = true
 
@@ -34,6 +40,8 @@ func save_config() -> void:
 	config.set_value(MAIN_MUSIC_STRING,"song_position", Global.audio.get_playback_position())
 	config.set_value(MAIN_MUSIC_STRING,"volume", AudioServer.get_bus_volume_db(0))
 	
+	config.set_value(MAIN_SETTINGS_STRING,MAIN_SETTINGS_STRING, settings)
+	
 	config.save(CONFIG_PATH)
 
 func load_config() -> void:
@@ -50,6 +58,8 @@ func load_config() -> void:
 		#get_window().size = config.get_value(MAIN_WINDOW_STRING, "size", get_window().size)
 	
 	get_window().current_screen = config.get_value(MAIN_WINDOW_STRING, "screen", get_window().current_screen)
+	
+	settings = config.get_value(MAIN_SETTINGS_STRING,MAIN_SETTINGS_STRING,{} as Dictionary[String,Variant])
 	
 	for dir : String in config.get_value(MAIN_MUSIC_STRING, "dirs", []):
 		Global.add_directory(dir,DirAccess.get_files_at(dir))

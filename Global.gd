@@ -7,6 +7,8 @@ const PATH_META_STRING :String= "PATH"
 
 var dirs_music_loaded :Dictionary[String,PackedStringArray]={}
 var all_music_files_loaded :PackedStringArray
+var artists_files :Dictionary[String,PackedStringArray]
+
 var audio : AudioStreamPlayer
 
 var current_track_path : String

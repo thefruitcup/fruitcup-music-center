@@ -49,21 +49,26 @@ func _create_label_viewport() -> void:
 	
 	viewport.size = size + viewport_padding
 	viewport_container.size = size + viewport_padding
+	custom_minimum_size = viewport_container.size
 	
 	label = Label.new()
 	label.set_anchors_preset(Control.PRESET_FULL_RECT)
 	
-	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.horizontal_alignment = extra_label_settings.horizontal
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	
-	label.text =text
+	label.text = text
 	label.label_settings = label_settings
+	label.material = extra_label_settings.material.duplicate(true)
+	
+	label.add_theme_font_override("SystemFont",get_theme_default_font())
 	
 	#because the text gives the button it's proper size for grid container & this is simple enough for now
 	add_theme_color_override("font_color",Color.TRANSPARENT)
 	add_theme_color_override("font_disabled_color",Color.TRANSPARENT)
 	add_theme_color_override("font_focus_color",Color.TRANSPARENT)
 	add_theme_color_override("font_hover_color",Color.TRANSPARENT)
+	add_theme_color_override("font_hover_pressed_color",Color.TRANSPARENT)
 	add_theme_color_override("font_pressed_color",Color.TRANSPARENT)
 	add_theme_color_override("font_outline_color",Color.TRANSPARENT)
 	viewport.add_child(label)
