@@ -15,7 +15,7 @@ const ORDER: Dictionary[StringName, int] = {
 	&"Object": 2
 }
 
-const Plugin := preload("uid://bc0b5v66xdidn")
+const Plugin := preload("uid://1rb0y8f52l4g")
 
 enum Category {
 	ALL = 0, SCENES = 1, GDSCRIPTS = 2, RESOURCES = 3

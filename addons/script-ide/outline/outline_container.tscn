@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://ux3ldi4ka8ji"]
+[gd_scene format=3 uid="uid://xr5hdmq1aelv"]
 
-[ext_resource type="Script" uid="uid://db0be00ai3tfi" path="res://addons/script-ide/outline/outline_container.gd" id="1_w4vhe"]
+[ext_resource type="Script" path="res://addons/script-ide/outline/outline_container.gd" id="1_w4vhe"]
 
 [node name="OutlineContainer" type="VBoxContainer" unique_id=181236283]
 offset_right = 174.0

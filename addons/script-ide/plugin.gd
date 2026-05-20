@@ -15,19 +15,19 @@ extends EditorPlugin
 const BUILT_IN_SCRIPT: StringName = &"::GDScript"
 const QUICK_OPEN_INTERVAL: int = 400
 
-const MULTILINE_TAB_BAR: PackedScene = preload("uid://vjuhunm2uboy")
-const MultilineTabBar := preload("uid://l1rdargfn67o")
+const MULTILINE_TAB_BAR: PackedScene = preload("uid://cy0golessm8us")
+const MultilineTabBar := preload("uid://bepujpexsqsfn")
 
-const QUICK_OPEN_SCENE: PackedScene = preload("uid://d2pttchmj3n7q")
-const QuickOpenPopup := preload("uid://cgwp4rl1udqbb")
+const QUICK_OPEN_SCENE: PackedScene = preload("uid://da26wp8rc2n0s")
+const QuickOpenPopup := preload("uid://btarmioi5svqa")
 
-const OVERRIDE_SCENE: PackedScene = preload("uid://bb1n82qxlqanh")
-const OverridePopup := preload("uid://c4w55j4jswg2t")
+const OVERRIDE_SCENE: PackedScene = preload("uid://dx4go87acgi3s")
+const OverridePopup := preload("uid://cuqnntott1nlg")
 
-const OUTLINE_CONTAINER_SCENE: PackedScene = preload("uid://ux3ldi4ka8ji")
-const OutlineContainer := preload("uid://db0be00ai3tfi")
+const OUTLINE_CONTAINER_SCENE: PackedScene = preload("uid://xr5hdmq1aelv")
+const OutlineContainer := preload("uid://c3f13d4bx2ep1")
 
-const SplitCodeEdit := preload("uid://boy48rhhyrph")
+const SplitCodeEdit := preload("uid://cycj0xoygcfsd")
 
 #region Settings and Shortcuts
 ## Editor setting path

@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://d2pttchmj3n7q"]
+[gd_scene format=3 uid="uid://da26wp8rc2n0s"]
 
-[ext_resource type="Script" uid="uid://cgwp4rl1udqbb" path="res://addons/script-ide/quickopen/quick_open_popup.gd" id="1_6d8qa"]
+[ext_resource type="Script" path="res://addons/script-ide/quickopen/quick_open_popup.gd" id="1_6d8qa"]
 
 [sub_resource type="Image" id="Image_70lqw"]
 data = {

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://b8r2e72ypceq7"]
 
-[ext_resource type="Texture2D" uid="uid://ctjyrgep0frwl" path="res://assets/textures/button_00.png" id="1_2cqfq"]
-[ext_resource type="SystemFont" uid="uid://4vqd5rv0bnsn" path="res://assets/misc/windows_font.tres" id="1_074og"]
+[ext_resource type="Texture2D" uid="uid://dcfvjgegfphmm" path="res://assets/textures/button_00.png" id="1_2cqfq"]
+[ext_resource type="SystemFont" uid="uid://kfqcsp3gbgyw" path="res://assets/misc/windows_font.tres" id="1_074og"]
 [ext_resource type="Script" uid="uid://benjtjhlxieh2" path="res://scripts/backend/handle_theme.gd" id="2_074og"]
-[ext_resource type="Texture2D" uid="uid://b1dj140fckdyp" path="res://assets/textures/background_00.png" id="2_yaehf"]
+[ext_resource type="Texture2D" uid="uid://tkf7f4de7qad" path="res://assets/textures/background_00.png" id="2_yaehf"]
 [ext_resource type="Shader" uid="uid://k12xpcn7wp3n" path="res://shaders/background_0.gdshader" id="3_074og"]
 [ext_resource type="Script" uid="uid://dvf6lmson84p7" path="res://scripts/frontend/music_grid_display.gd" id="4_cegan"]
 [ext_resource type="Script" uid="uid://c548hcm2l0lic" path="res://scripts/backend/extra_label_settings_resource.gd" id="5_82xsv"]
@@ -19,9 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://cg8vkm5kqeoks" path="res://assets/textures/cover_art_border.png" id="11_ryguw"]
 [ext_resource type="Script" uid="uid://cfmshqdikgfw7" path="res://scripts/backend/setup_settings.gd" id="12_a6jrf"]
 [ext_resource type="Script" uid="uid://b67qi5f8c6s1" path="res://scripts/backend/first_time_setup.gd" id="13_xuqvo"]
-[ext_resource type="AudioStream" uid="uid://c1irl84tutmlq" path="res://assets/audio/fmc_startup.ogg" id="14_qsp4k"]
+[ext_resource type="AudioStream" uid="uid://d2uhed2bjxatl" path="res://assets/audio/fmc_startup.ogg" id="14_qsp4k"]
 [ext_resource type="Script" uid="uid://cow2o1esrju6q" path="res://scripts/visual/attribution_button.gd" id="15_kq58d"]
-[ext_resource type="Texture2D" uid="uid://gb2066eojkxi" path="res://assets/textures/icon_processed_no_tex.png" id="16_seu75"]
+[ext_resource type="Texture2D" uid="uid://3lrs4ccjpwjh" path="res://assets/textures/icon_processed_no_tex.png" id="16_seu75"]
 [ext_resource type="Script" uid="uid://5jsxlhqhxsck" path="res://scripts/backend/get_cover_art_from_main.gd" id="23_d13ii"]
 [ext_resource type="Script" uid="uid://dvmsv7dnuhh7s" path="res://scripts/frontend/currently_playing_display_music_info.gd" id="24_1u8w0"]
 
@@ -121,7 +121,7 @@ script = ExtResource("5_82xsv")
 normal = Color(0.3254902, 0.50980395, 0.6745098, 1)
 hover = Color(0.90588236, 0.9137255, 0.92156863, 1)
 disable = Color(0, 0, 0.30588236, 1)
-metadata/_custom_type_script = "uid://c548hcm2l0lic"
+metadata/_custom_type_script = "uid://dmeksqqtmwdsr"
 
 [sub_resource type="LabelSettings" id="LabelSettings_lrokg"]
 shadow_color = Color(0, 0, 0, 0.08235294)
@@ -131,7 +131,7 @@ shadow_offset = Vector2(1, 1.54)
 script = ExtResource("5_82xsv")
 normal = Color(0.26666668, 0.49019608, 1, 1)
 disable = Color(0, 0, 0.30588236, 1)
-metadata/_custom_type_script = "uid://c548hcm2l0lic"
+metadata/_custom_type_script = "uid://dmeksqqtmwdsr"
 
 [sub_resource type="LabelSettings" id="LabelSettings_eseco"]
 font_size = 32
@@ -541,7 +541,6 @@ for something so simple"
 script = ExtResource("6_getpj")
 transition_from = NodePath("../..")
 transition_to = NodePath("../../../currentlyplaying")
-metadata/_custom_type_script = "uid://cxp7tjqkbloi5"
 
 [node name="current_version" type="SubViewportContainer" parent="main" unique_id=873614110]
 material = ExtResource("9_1u8w0")
@@ -705,7 +704,6 @@ offset_bottom = 193.0
 text = "Add Directory      "
 script = ExtResource("11_lswn8")
 fire_on_button_down = false
-metadata/_custom_type_script = "uid://bfecp06t5lc3q"
 
 [node name="FileDialog" type="FileDialog" parent="settings/add_directory" unique_id=1276784476]
 oversampling_override = 1.0
@@ -723,7 +721,6 @@ offset_bottom = 216.0
 text = "Remove Directory"
 script = ExtResource("11_lswn8")
 fire_on_button_down = false
-metadata/_custom_type_script = "uid://bfecp06t5lc3q"
 
 [node name="return" type="Button" parent="settings" unique_id=27265268 node_paths=PackedStringArray("transition_from", "transition_to")]
 layout_mode = 1
@@ -819,7 +816,6 @@ offset_bottom = 193.0
 text = "Add Directory      "
 script = ExtResource("11_lswn8")
 fire_on_button_down = false
-metadata/_custom_type_script = "uid://bfecp06t5lc3q"
 
 [node name="FileDialog" type="FileDialog" parent="setup/add_directory" unique_id=2104826915]
 oversampling_override = 1.0
@@ -837,7 +833,6 @@ offset_bottom = 216.0
 text = "Remove Directory"
 script = ExtResource("11_lswn8")
 fire_on_button_down = false
-metadata/_custom_type_script = "uid://bfecp06t5lc3q"
 
 [node name="finish_setup" type="Button" parent="setup" unique_id=887708932 node_paths=PackedStringArray("transition_from", "transition_to")]
 layout_mode = 1
@@ -938,6 +933,35 @@ offset_top = -1.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="godot" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=658026653 node_paths=PackedStringArray("attribution_display")]
+layout_mode = 2
+text = "Godot Engine"
+script = ExtResource("15_kq58d")
+attribution_display = NodePath("../../../attribution_background/attribution_text")
+attribution_text = "\"Godot Engine\" - \"Juan Linietsky\" https://github.com/godotengine/godot
+
+Copyright (c) 2014-present Godot Engine contributors (see AUTHORS.md).
+Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the \"Software\"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE."
+viewport_padding = Vector2(16, 0)
 
 [node name="taglibsharp" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=418306614 node_paths=PackedStringArray("attribution_display")]
 layout_mode = 2
@@ -1450,7 +1474,6 @@ necessary.  Here is a sample; alter the names:
 That's all there is to it!
 "
 viewport_padding = Vector2(8, 0)
-metadata/_custom_type_script = "uid://bfecp06t5lc3q"
 
 [node name="scriptide" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=1111476791 node_paths=PackedStringArray("attribution_display")]
 layout_mode = 2
@@ -1481,7 +1504,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE."
 viewport_padding = Vector2(8, 0)
-metadata/_custom_type_script = "uid://bfecp06t5lc3q"
 
 [node name="console" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=849171588 node_paths=PackedStringArray("attribution_display")]
 layout_mode = 2
@@ -1507,7 +1529,72 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTIO
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
 viewport_padding = Vector2(8, 0)
-metadata/_custom_type_script = "uid://bfecp06t5lc3q"
+
+[node name="asynchelper" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=591174310 node_paths=PackedStringArray("attribution_display")]
+layout_mode = 2
+text = "AsyncHelper"
+script = ExtResource("15_kq58d")
+attribution_display = NodePath("../../../attribution_background/attribution_text")
+attribution_text = "\"AsyncHelper\" - farhil https://www.reddit.com/r/godot/comments/173q971/comment/k455bzu/"
+viewport_padding = Vector2(16, 0)
+
+[node name="ffmpegcore" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=1305739752 node_paths=PackedStringArray("attribution_display")]
+layout_mode = 2
+text = "FFMpegCore"
+script = ExtResource("15_kq58d")
+attribution_display = NodePath("../../../attribution_background/attribution_text")
+attribution_text = "\"FFMpegCore\" - rosenbjerg https://github.com/rosenbjerg/FFMpegCore
+
+MIT License
+
+Copyright (c) 2023 Vlad Jerca
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the \"Software\"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE."
+viewport_padding = Vector2(16, 0)
+
+[node name="efdsuids" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=696943731 node_paths=PackedStringArray("attribution_display")]
+layout_mode = 2
+text = "FFMpegCore"
+script = ExtResource("15_kq58d")
+attribution_display = NodePath("../../../attribution_background/attribution_text")
+attribution_text = "\"ef-ds-uids\" - Maaack https://github.com/Maaack/ef-ds-uids
+
+Copyright (c) 2026 Marek Belski.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the \"Software\"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE."
+viewport_padding = Vector2(16, 0)
 
 [node name="textgradientshader" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=1360828393 node_paths=PackedStringArray("attribution_display")]
 layout_mode = 2
@@ -1521,7 +1608,6 @@ attribution_text = "Text Gradient Shader is a heavily modified version of these 
 
 "
 viewport_padding = Vector2(16, 0)
-metadata/_custom_type_script = "uid://bfecp06t5lc3q"
 
 [node name="wavelineshader" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=1284606784 node_paths=PackedStringArray("attribution_display")]
 layout_mode = 2
@@ -1653,7 +1739,6 @@ express Statement of Purpose.
     this CC0 or use of the Work.
 "
 viewport_padding = Vector2(16, 0)
-metadata/_custom_type_script = "uid://bfecp06t5lc3q"
 
 [node name="notosans" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=2139531870 node_paths=PackedStringArray("attribution_display")]
 layout_mode = 2
@@ -1756,77 +1841,6 @@ DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
 OTHER DEALINGS IN THE FONT SOFTWARE."
 viewport_padding = Vector2(16, 0)
-metadata/_custom_type_script = "uid://bfecp06t5lc3q"
-
-[node name="asynchelper" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=591174310 node_paths=PackedStringArray("attribution_display")]
-layout_mode = 2
-text = "AsyncHelper"
-script = ExtResource("15_kq58d")
-attribution_display = NodePath("../../../attribution_background/attribution_text")
-attribution_text = "\"AsyncHelper\" - farhil https://www.reddit.com/r/godot/comments/173q971/comment/k455bzu/"
-viewport_padding = Vector2(16, 0)
-metadata/_custom_type_script = "uid://bfecp06t5lc3q"
-
-[node name="ffmpegcore" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=1305739752 node_paths=PackedStringArray("attribution_display")]
-layout_mode = 2
-text = "FFMpegCore"
-script = ExtResource("15_kq58d")
-attribution_display = NodePath("../../../attribution_background/attribution_text")
-attribution_text = "\"FFMpegCore\" - rosenbjerg https://github.com/rosenbjerg/FFMpegCore
-
-MIT License
-
-Copyright (c) 2023 Vlad Jerca
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the \"Software\"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE."
-viewport_padding = Vector2(16, 0)
-metadata/_custom_type_script = "uid://bfecp06t5lc3q"
-
-[node name="godot" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=658026653 node_paths=PackedStringArray("attribution_display")]
-layout_mode = 2
-text = "Godot Engine"
-script = ExtResource("15_kq58d")
-attribution_display = NodePath("../../../attribution_background/attribution_text")
-attribution_text = "\"Godot Engine\" - \"Juan Linietsky\" https://github.com/godotengine/godot
-
-Copyright (c) 2014-present Godot Engine contributors (see AUTHORS.md).
-Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the \"Software\"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE."
-viewport_padding = Vector2(16, 0)
-metadata/_custom_type_script = "uid://bfecp06t5lc3q"
 
 [node name="startup" type="Control" parent="." unique_id=1537037399]
 process_mode = 4
@@ -1887,7 +1901,6 @@ for something so simple"
 script = ExtResource("6_getpj")
 transition_from = NodePath("..")
 transition_to = NodePath("../../main")
-metadata/_custom_type_script = "uid://cxp7tjqkbloi5"
 
 [node name="startup" type="AudioStreamPlayer" parent="startup" unique_id=1257423616]
 stream = ExtResource("14_qsp4k")

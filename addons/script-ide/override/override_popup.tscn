@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://bb1n82qxlqanh"]
+[gd_scene format=3 uid="uid://dx4go87acgi3s"]
 
-[ext_resource type="Script" uid="uid://c4w55j4jswg2t" path="res://addons/script-ide/override/override_popup.gd" id="1_54se3"]
+[ext_resource type="Script" path="res://addons/script-ide/override/override_popup.gd" id="1_54se3"]
 
 [node name="OverridePanel" type="PopupPanel" unique_id=145780904]
 oversampling_override = 1.0

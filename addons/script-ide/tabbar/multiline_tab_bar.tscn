@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://vjuhunm2uboy"]
+[gd_scene format=3 uid="uid://cy0golessm8us"]
 
-[ext_resource type="Script" uid="uid://l1rdargfn67o" path="res://addons/script-ide/tabbar/multiline_tab_bar.gd" id="1_8jr3v"]
+[ext_resource type="Script" path="res://addons/script-ide/tabbar/multiline_tab_bar.gd" id="1_8jr3v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_la2jv"]
 content_margin_left = 0.0
