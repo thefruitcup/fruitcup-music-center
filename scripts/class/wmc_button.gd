@@ -33,6 +33,8 @@ func _ready() -> void:
 
 #Not intended for outside use
 func _create_label_viewport() -> void:
+	if viewport: return
+	
 	#doing all of this so text can look how it does in WMC, as putting a gradient shader applies it on the font's texture
 	#not the text itself
 	#this does (fortunately?) give us that blurry look when we fullscreen the window though
@@ -68,6 +70,8 @@ func _create_label_viewport() -> void:
 	add_child(viewport_container)
 
 func _create_texture() -> void:
+	if texture_rect: return
+	
 	texture_rect = TextureRect.new()
 	texture_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	texture_rect.texture = texture

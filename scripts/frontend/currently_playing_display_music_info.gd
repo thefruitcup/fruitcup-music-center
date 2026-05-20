@@ -18,6 +18,8 @@ func update_display() -> void:
 		text = "[font_size=20]No Track Playing[/font_size]"
 		return
 	
+	if !Global.audio.stream: return
+	
 	current_metadata = display_info.current_metadata
 	
 	text = "[font_size=20]" + current_metadata["title"] + "[/font_size]"

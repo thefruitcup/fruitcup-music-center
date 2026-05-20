@@ -28,6 +28,7 @@ func save_config() -> void:
 	
 	#the music paths are useless to save, they're most likely gonna be changed between sessions,
 	#the directory is the most important to save
+
 	config.set_value(MAIN_MUSIC_STRING, "dirs", Global.dirs_music_loaded.keys())
 	config.set_value(MAIN_MUSIC_STRING,"song_playing",Global.current_track_path)
 	config.set_value(MAIN_MUSIC_STRING,"song_position", Global.audio.get_playback_position())
@@ -56,6 +57,7 @@ func load_config() -> void:
 	AudioServer.set_bus_volume_db(0,config.get_value(MAIN_MUSIC_STRING,"volume",0))
 	
 	Global.on_audio_file_clicked(config.get_value(MAIN_MUSIC_STRING,"song_playing",""))
+	
 	Global.audio.seek(config.get_value(MAIN_MUSIC_STRING,"song_position",0))
 	Global.audio.stream_paused = true
 	first_time = false

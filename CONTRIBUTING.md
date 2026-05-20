@@ -9,7 +9,7 @@ Now Clone the project:<br>
 
 Open Godot to the Project and once everything is done importing, you can get started.
 
-*When writing code, please keep your variables, classes, functions, etc. in snake_case when in GDScript.<br>
+*When writing code, please keep your variables, functions, etc. in snake_case when in GDScript (Exlcuding Class Names, please have them in CamelCase).<br>
 Same applies when naming Nodes.*
 
 **I will not accept Fully/Semi-Fully AI Generated Code.**

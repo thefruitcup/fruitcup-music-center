@@ -2,7 +2,7 @@ extends Node
 
 signal updated_directories
 signal updated_metadata(data : MetadataResource, default_title : String)
-const SUPPORTED_FORMATS :Array[String]= ["ogg","wav","mp3"]
+const SUPPORTED_FORMATS :Array[String]= ["ogg","wav","mp3","aac","m4a"]
 const PATH_META_STRING :String= "PATH"
 
 var dirs_music_loaded :Dictionary[String,PackedStringArray]={}
@@ -13,11 +13,16 @@ var current_track_path : String
 var shuffle_queue :PackedStringArray
 var is_shuffle_enabled : bool = false
 
+var audio_converter :AudioConverter
+
 func _ready() -> void:
 	audio = AudioStreamPlayer.new()
 	audio.playback_type = AudioServer.PLAYBACK_TYPE_STREAM
 	
 	add_child(audio)
+	
+	audio_converter = AudioConverter.new()
+	add_child(audio_converter)
 	
 	Console.enable_on_release_build = false
 	Console.add_command("play_audio",on_audio_file_clicked,["file"],1)
@@ -41,6 +46,11 @@ func add_directory(dir_selected : String, files_in_dir : PackedStringArray) -> v
 
 func remove_dir(dir_selected : String) -> void:
 	if !dir_selected in dirs_music_loaded.keys(): return
+	if current_track_path in dirs_music_loaded[dir_selected]:
+		audio.stop()
+		audio.stream = null
+		current_track_path = ""
+	
 	
 	dirs_music_loaded.erase(dir_selected)
 	update_all_music_files_loaded()
@@ -70,6 +80,7 @@ func get_metadata(file :String= current_track_path) -> MetadataResource:
 
 func on_audio_file_clicked(file : String) -> void:
 	if file.is_empty(): return
+	if !FileAccess.file_exists(file): return
 	
 	match file.get_extension():
 		"ogg":
@@ -78,9 +89,19 @@ func on_audio_file_clicked(file : String) -> void:
 			audio.stream = AudioStreamMP3.load_from_file(file)
 		"wav":
 			audio.stream = AudioStreamWAV.load_from_file(file)
+		
+		#honestly, there should be a different function for aac/m4a, that just streams chunks of data from the created ogg file
+		#as FFMpeg isn't fast enough, even with it being on different Thread w/ High Priority
+		#and we can't expect each user's PC to be that powerful to convert mbs of those files from AAC to OGG
+		#"aac", "m4a":
+			#create_tween().tween_property(audio,"volume_db",-80,0.25)
+			#audio_converter.ConvertAAC(file)
+			#
+			#audio.stream = AudioStreamOggVorbis.load_from_file("user://conv.ogg")
 	
 	get_metadata(file)
 	current_track_path = file
+	
 	
 	audio.volume_db = -80
 	create_tween().tween_property(audio,"volume_db",0,0.25)

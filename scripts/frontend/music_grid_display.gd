@@ -19,10 +19,13 @@ var last_index_load : int = 0
 var start_time :float
 
 func _ready() -> void:
+	process_priority = -16
 	grid_container_clone = grid_container.duplicate()
 	Global.updated_directories.connect(update_grid)
 	
 	Console.add_command("update_grid",update_grid)
+	if Global.dirs_music_loaded.size() <= 0: return
+	await get_tree().process_frame
 	update_grid()
 
 func update_grid() -> void:
@@ -42,15 +45,17 @@ func update_grid() -> void:
 	last_index_load = 0
 	batch_creation_timer.start()
 
+#Weird, sometimes this function lags the fuck out of FMC,
+#and other times it doesn't. Should figure out why that is
 func _on_batch_creation_timer_timeout() -> void:
 	for index : int in 16:
-		if last_index_load >= max(1,Global.all_music_files_loaded.size() - 1):
+		if last_index_load > Global.all_music_files_loaded.size() - 1:
 			break
 		
 		var file :String= Global.all_music_files_loaded[last_index_load]
-		
 		var button :WMCButton= WMCButton.new()
 		var music_name :String= file.get_file().get_basename()
+		
 		var add_gradient : bool = false
 		
 		if music_name.length() >= AUTO_GRADIENT_TITLE_CHARS:
@@ -65,13 +70,14 @@ func _on_batch_creation_timer_timeout() -> void:
 		button.fire_on_button_up = false
 		button.button_hovered_function = music_button_hover
 		button.extra_label_settings = extra_label_settings
+		button.viewport_padding = Vector2(16,0)
 		
 		current_sub_grid_container.add_child(button)
 		
 		button.label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 		#Labels within Viewports don't recieve the Parent's Theme
 		#Should really fix this within WMCButton, but this works for now and I'm a little tired of
-		#getting the gradient to work and now look like complete shit
+		#getting the gradient to work and not look like complete shit
 		button.label.theme = (get_parent().get_parent() as Control).theme
 		
 		button.button_down.connect(Global.on_audio_file_clicked.bind(file))
@@ -97,6 +103,8 @@ func _on_batch_creation_timer_timeout() -> void:
 		Console.print_multiple("Total Time: ",(end_time - start_time),"s")
 		Console.print_multiple("Loaded: ",Global.all_music_files_loaded.size()," music files")
 		batch_creation_timer.stop()
+	
+	await get_tree().process_frame
 
 func music_button_hover(hovered : bool, button : WMCButton) -> void:
 	button.label.label_settings.font_size = (MUSIC_BUTTON_HOVER_FONT_SIZE if hovered else MUSIC_BUTTON_NORMAL_FONT_SIZE)

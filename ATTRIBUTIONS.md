@@ -1,5 +1,52 @@
 Fruitcup Music Center is under the [MIT License](LICENSE)
 
+"Godot Engine" - "Juan Linietsky" https://github.com/godotengine/godot
+
+Copyright (c) 2014-present Godot Engine contributors (see AUTHORS.md).
+Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+"FFMpegCore" - rosenbjerg https://github.com/rosenbjerg/FFMpegCore
+
+MIT License
+
+Copyright (c) 2023 Vlad Jerca
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
 "script-ide" - Maran23 https://github.com/Maran23/script-ide 
 
 MIT License
@@ -50,18 +97,20 @@ Text Gradient Shader is a heavily modified version of these two shaders:
 
 "Wave Line Shader (with asymmetric falloff feature)" - sarram https://godotshaders.com/shader/wave-line-shader-with-asymmetric-falloff-feature/
 
+"AsyncHelper" - farhil https://www.reddit.com/r/godot/comments/173q971/comment/k455bzu/
+
 Creative Commons Legal Code
 
 CC0 1.0 Universal
 
-    CREATIVE COMMONS CORPORATION IS NOT A LAW FIRM AND DOES NOT PROVIDE
-    LEGAL SERVICES. DISTRIBUTION OF THIS DOCUMENT DOES NOT CREATE AN
-    ATTORNEY-CLIENT RELATIONSHIP. CREATIVE COMMONS PROVIDES THIS
-    INFORMATION ON AN "AS-IS" BASIS. CREATIVE COMMONS MAKES NO WARRANTIES
-    REGARDING THE USE OF THIS DOCUMENT OR THE INFORMATION OR WORKS
-    PROVIDED HEREUNDER, AND DISCLAIMS LIABILITY FOR DAMAGES RESULTING FROM
-    THE USE OF THIS DOCUMENT OR THE INFORMATION OR WORKS PROVIDED
-    HEREUNDER.
+	CREATIVE COMMONS CORPORATION IS NOT A LAW FIRM AND DOES NOT PROVIDE
+	LEGAL SERVICES. DISTRIBUTION OF THIS DOCUMENT DOES NOT CREATE AN
+	ATTORNEY-CLIENT RELATIONSHIP. CREATIVE COMMONS PROVIDES THIS
+	INFORMATION ON AN "AS-IS" BASIS. CREATIVE COMMONS MAKES NO WARRANTIES
+	REGARDING THE USE OF THIS DOCUMENT OR THE INFORMATION OR WORKS
+	PROVIDED HEREUNDER, AND DISCLAIMS LIABILITY FOR DAMAGES RESULTING FROM
+	THE USE OF THIS DOCUMENT OR THE INFORMATION OR WORKS PROVIDED
+	HEREUNDER.
 
 Statement of Purpose
 
@@ -95,7 +144,7 @@ Related Rights"). Copyright and Related Rights include, but are not
 limited to, the following:
 
   i. the right to reproduce, adapt, distribute, perform, display,
-     communicate, and translate a Work;
+	 communicate, and translate a Work;
  ii. moral rights retained by the original author(s) and/or performer(s);
 iii. publicity and privacy rights pertaining to a person's image or
      likeness depicted in a Work;
@@ -164,21 +213,21 @@ express Statement of Purpose.
     the greatest extent permissible under applicable law.
  c. Affirmer disclaims responsibility for clearing rights of other persons
     that may apply to the Work or any use thereof, including without
-    limitation any person's Copyright and Related Rights in the Work.
-    Further, Affirmer disclaims responsibility for obtaining any necessary
-    consents, permissions or other rights required for any use of the
-    Work.
+	limitation any person's Copyright and Related Rights in the Work.
+	Further, Affirmer disclaims responsibility for obtaining any necessary
+	consents, permissions or other rights required for any use of the
+	Work.
  d. Affirmer understands and acknowledges that Creative Commons is not a
-    party to this document and has no duty or obligation with respect to
-    this CC0 or use of the Work.
+	party to this document and has no duty or obligation with respect to
+	this CC0 or use of the Work.
 
 "taglib-sharp" - Mono https://github.com/mono/taglib-sharp
 
 		  GNU LESSER GENERAL PUBLIC LICENSE
-		       Version 2.1, February 1999
+			   Version 2.1, February 1999
 
  Copyright (C) 1991, 1999 Free Software Foundation, Inc.
-     51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+	 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  Everyone is permitted to copy and distribute verbatim copies
  of this license document, but changing it is not allowed.
 
@@ -186,7 +235,7 @@ express Statement of Purpose.
  as the successor of the GNU Library Public License, version 2, hence
  the version number 2.1.]
 
-			    Preamble
+				Preamble
 
   The licenses for most software are designed to take away your
 freedom to share and change it.  By contrast, the GNU General Public
@@ -340,28 +389,28 @@ of it, thus forming a work based on the Library, and copy and
 distribute such modifications or work under the terms of Section 1
 above, provided that you also meet all of these conditions:
 
-    a) The modified work must itself be a software library.
+	a) The modified work must itself be a software library.
 
-    b) You must cause the files modified to carry prominent notices
-    stating that you changed the files and the date of any change.
+	b) You must cause the files modified to carry prominent notices
+	stating that you changed the files and the date of any change.
 
-    c) You must cause the whole of the work to be licensed at no
-    charge to all third parties under the terms of this License.
+	c) You must cause the whole of the work to be licensed at no
+	charge to all third parties under the terms of this License.
 
-    d) If a facility in the modified Library refers to a function or a
-    table of data to be supplied by an application program that uses
-    the facility, other than as an argument passed when the facility
-    is invoked, then you must make a good faith effort to ensure that,
-    in the event an application does not supply such function or
-    table, the facility still operates, and performs whatever part of
-    its purpose remains meaningful.
+	d) If a facility in the modified Library refers to a function or a
+	table of data to be supplied by an application program that uses
+	the facility, other than as an argument passed when the facility
+	is invoked, then you must make a good faith effort to ensure that,
+	in the event an application does not supply such function or
+	table, the facility still operates, and performs whatever part of
+	its purpose remains meaningful.
 
-    (For example, a function in a library to compute square roots has
-    a purpose that is entirely well-defined independent of the
-    application.  Therefore, Subsection 2d requires that any
-    application-supplied function or table used by this function must
-    be optional: if the application does not supply it, the square
-    root function must still compute square roots.)
+	(For example, a function in a library to compute square roots has
+	a purpose that is entirely well-defined independent of the
+	application.  Therefore, Subsection 2d requires that any
+	application-supplied function or table used by this function must
+	be optional: if the application does not supply it, the square
+	root function must still compute square roots.)
 
 These requirements apply to the modified work as a whole.  If
 identifiable sections of that work are not derived from the Library,
@@ -473,23 +522,23 @@ of these things:
 
     b) Use a suitable shared library mechanism for linking with the
     Library.  A suitable mechanism is one that (1) uses at run time a
-    copy of the library already present on the user's computer system,
-    rather than copying library functions into the executable, and (2)
-    will operate properly with a modified version of the library, if
-    the user installs one, as long as the modified version is
-    interface-compatible with the version that the work was made with.
+	copy of the library already present on the user's computer system,
+	rather than copying library functions into the executable, and (2)
+	will operate properly with a modified version of the library, if
+	the user installs one, as long as the modified version is
+	interface-compatible with the version that the work was made with.
 
-    c) Accompany the work with a written offer, valid for at
-    least three years, to give the same user the materials
-    specified in Subsection 6a, above, for a charge no more
-    than the cost of performing this distribution.
+	c) Accompany the work with a written offer, valid for at
+	least three years, to give the same user the materials
+	specified in Subsection 6a, above, for a charge no more
+	than the cost of performing this distribution.
 
-    d) If distribution of the work is made by offering access to copy
-    from a designated place, offer equivalent access to copy the above
-    specified materials from the same place.
+	d) If distribution of the work is made by offering access to copy
+	from a designated place, offer equivalent access to copy the above
+	specified materials from the same place.
 
-    e) Verify that the user has already received a copy of these
-    materials or that you have already sent this user a copy.
+	e) Verify that the user has already received a copy of these
+	materials or that you have already sent this user a copy.
 
   For an executable, the required form of the "work that uses the
 Library" must include any data and utility programs needed for
@@ -513,14 +562,14 @@ library, provided that the separate distribution of the work based on
 the Library and of the other library facilities is otherwise
 permitted, and provided that you do these two things:
 
-    a) Accompany the combined library with a copy of the same work
-    based on the Library, uncombined with any other library
-    facilities.  This must be distributed under the terms of the
-    Sections above.
+	a) Accompany the combined library with a copy of the same work
+	based on the Library, uncombined with any other library
+	facilities.  This must be distributed under the terms of the
+	Sections above.
 
-    b) Give prominent notice with the combined library of the fact
-    that part of it is a work based on the Library, and explaining
-    where to find the accompanying uncombined form of the same work.
+	b) Give prominent notice with the combined library of the fact
+	that part of it is a work based on the Library, and explaining
+	where to find the accompanying uncombined form of the same work.
 
   8. You may not copy, modify, sublicense, link with, or distribute
 the Library except as expressly provided under this License.  Any
@@ -646,22 +695,22 @@ safest to attach them to the start of each source file to most effectively
 convey the exclusion of warranty; and each file should have at least the
 "copyright" line and a pointer to where the full notice is found.
 
-    <one line to give the library's name and a brief idea of what it does.>
-    Copyright (C) <year>  <name of author>
+	<one line to give the library's name and a brief idea of what it does.>
+	Copyright (C) <year>  <name of author>
 
-    This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Lesser General Public
-    License as published by the Free Software Foundation; either
-    version 2.1 of the License, or (at your option) any later version.
+	This library is free software; you can redistribute it and/or
+	modify it under the terms of the GNU Lesser General Public
+	License as published by the Free Software Foundation; either
+	version 2.1 of the License, or (at your option) any later version.
 
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Lesser General Public License for more details.
+	This library is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+	Lesser General Public License for more details.
 
-    You should have received a copy of the GNU Lesser General Public
-    License along with this library; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+	You should have received a copy of the GNU Lesser General Public
+	License along with this library; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 Also add information on how to contact you by electronic and paper mail.
 

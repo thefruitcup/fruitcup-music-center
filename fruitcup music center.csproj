@@ -6,6 +6,7 @@
     <RootNamespace>fruitcupmusiccenter</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="FFMpegCore" Version="5.4.0" />
     <PackageReference Include="TagLibSharp" Version="2.3.0" />
   </ItemGroup>
 </Project>

@@ -25,56 +25,118 @@ public partial class MetadataHandler : Node
 
 	public static MetadataHandler Instance {get; private set;}
 	public static string APPDATA_PATH = System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData); 
-
+	public static string ALBUM_PATH = APPDATA_PATH + "/Fruitcup Media Center/" + "album.png"; 
 	public override void _Ready()
 	{
 		Instance = this;
+	}
+
+	static public Godot.Variant GetTag(StringName track, StringName tag)
+	{
+		TagLib.File tfile;
+
+		try
+		{
+			tfile = TagLib.File.Create(track);
+		}catch (System.Exception exception)
+		{
+			GD.PrintErr("Something went wrong loading file: ", track, " Error: ", exception.Message);
+			throw;
+		}
+
+		tag = tag.ToString().ToLower();
+
+		switch (tag)
+		{
+			case "title":
+				var t = tfile.Tag.Title;
+				tfile.Dispose();
+				return t;
+
+			case "album":
+				var a = tfile.Tag.Album;
+				tfile.Dispose();
+				return a;
+
+			case "artist":
+				string[] u_artists = tfile.Tag.Performers;
+				Array<String> artists = [.. u_artists];
+				tfile.Dispose();
+				return artists;
+			
+			case "art":
+				var pics = tfile.Tag.Pictures;
+				
+				if (pics.Count() <= 0)  return "";
+
+				var data = pics[0].Data.Data;
+				System.IO.File.WriteAllBytes(ALBUM_PATH,data);
+				tfile.Dispose();
+				return ALBUM_PATH;
+
+			default:
+				break;
+		}
+
+		tfile.Dispose();
+		GD.PrintErr("Tag not found! Tag: ", tag);
+		return "";
 	}
 
 	static public Dictionary<StringName, Godot.Variant> GetMetadata(StringName track)
 	{
 		Dictionary<StringName, Godot.Variant> metadata = new Dictionary<StringName, Godot.Variant>(); 
 
-		var tfile = TagLib.File.Create(track);
-		StringName title = tfile.Tag.Title;
-		string[] u_artists = tfile.Tag.Performers;
-		StringName album = tfile.Tag.Album;
-		IPicture[] u_cover_art = tfile.Tag.Pictures;
-		Array<StringName> artists = new Array<StringName>();
-		Array<int> cover_art = new Array<int>();
-
-		metadata["title"] = title;
-		metadata["album"] = album;
-
-		//i've got no idea if C# strings are converted into godot strings when needed
-		foreach(string art in u_artists)
+		try
 		{
-			StringName c_artist = art;
-			artists.Add(c_artist);
+			var tfile = TagLib.File.Create(track);
+			StringName title = tfile.Tag.Title;
+			string[] u_artists = tfile.Tag.Performers;
+			StringName album = tfile.Tag.Album;
+			IPicture[] u_cover_art = tfile.Tag.Pictures;
+			Array<StringName> artists = new Array<StringName>();
+			Array<int> cover_art = new Array<int>();
+
+			metadata["title"] = title;
+			metadata["album"] = album;
+
+			//i've got no idea if C# strings are converted into godot strings when needed
+			foreach(string art in u_artists)
+			{
+				StringName c_artist = art;
+				artists.Add(c_artist);
+			}
+
+			if(u_cover_art.Count() > 0)
+			{
+				//Note to self, Explicit Casts in C#
+				//causes GDScript to shit itself and not recognize this as a class anymore
+				//what is this frankenstein ass fucking engine bro
+				var data = u_cover_art[0].Data.Data;
+
+				//what the fuck? writing to a file worked, but trying to get godot to load the goddamn png with just bytes doesn't?
+				//either way, i've got no idea if this'd work on linux. i may have to disable support album covers if it doesn't
+				//as well, i can't believe i wrote Fruitcup Media Center instead of Fruitcup Music Center
+				//TODO: Add support for other image formats or find a way to convert them into PNGs
+				System.IO.File.WriteAllBytes(ALBUM_PATH,data);
+
+
+				metadata["art"] = true;
+			}
+			else
+			{
+				metadata["art"] = false;
+			}
+
+			metadata["artists"] = artists;
+			tfile.Dispose();
+		}
+		catch (System.Exception exception)
+		{
+			GD.PrintErr("Something went wrong loading file: ", track, " Error: ", exception.Message);
+			throw;
 		}
 
-		if(u_cover_art.Count() > 0)
-		{
-			//Note to self, Explicit Casts in C#
-			//causes GDScript to shit itself and not recognize this as a class anymore
-			//what is this frankenstein ass fucking engine bro
-			var data = u_cover_art[0].Data.Data;
-
-			//what the fuck? writing to a file worked, but trying to get godot to load the goddamn png with just bytes doesn't?
-			//either way, i've got no idea if this'd work on linux. i may have to disable support album covers if it doesn't
-			//as well, i can't believe i wrote Fruitcup Media Center instead of Fruitcup Music Center
-			//TODO: Add support for other image formats or find a way to convert them into PNGs
-			System.IO.File.WriteAllBytes(APPDATA_PATH + "/Fruitcup Media Center/" + "album.png",data);
-
-
-			metadata["art"] = true;
-		}
-		else
-		{
-			metadata["art"] = false;
-		}
-
-		metadata["artists"] = artists;
 
 		return metadata;
 	}

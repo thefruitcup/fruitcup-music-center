@@ -424,6 +424,7 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="main" unique_id=453480484]
+process_priority = -4
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.39865774
@@ -1754,6 +1755,76 @@ INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
 DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
 OTHER DEALINGS IN THE FONT SOFTWARE."
+viewport_padding = Vector2(16, 0)
+metadata/_custom_type_script = "uid://bfecp06t5lc3q"
+
+[node name="asynchelper" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=591174310 node_paths=PackedStringArray("attribution_display")]
+layout_mode = 2
+text = "AsyncHelper"
+script = ExtResource("15_kq58d")
+attribution_display = NodePath("../../../attribution_background/attribution_text")
+attribution_text = "\"AsyncHelper\" - farhil https://www.reddit.com/r/godot/comments/173q971/comment/k455bzu/"
+viewport_padding = Vector2(16, 0)
+metadata/_custom_type_script = "uid://bfecp06t5lc3q"
+
+[node name="ffmpegcore" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=1305739752 node_paths=PackedStringArray("attribution_display")]
+layout_mode = 2
+text = "FFMpegCore"
+script = ExtResource("15_kq58d")
+attribution_display = NodePath("../../../attribution_background/attribution_text")
+attribution_text = "\"FFMpegCore\" - rosenbjerg https://github.com/rosenbjerg/FFMpegCore
+
+MIT License
+
+Copyright (c) 2023 Vlad Jerca
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the \"Software\"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE."
+viewport_padding = Vector2(16, 0)
+metadata/_custom_type_script = "uid://bfecp06t5lc3q"
+
+[node name="godot" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=658026653 node_paths=PackedStringArray("attribution_display")]
+layout_mode = 2
+text = "Godot Engine"
+script = ExtResource("15_kq58d")
+attribution_display = NodePath("../../../attribution_background/attribution_text")
+attribution_text = "\"Godot Engine\" - \"Juan Linietsky\" https://github.com/godotengine/godot
+
+Copyright (c) 2014-present Godot Engine contributors (see AUTHORS.md).
+Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the \"Software\"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE."
 viewport_padding = Vector2(16, 0)
 metadata/_custom_type_script = "uid://bfecp06t5lc3q"
 
