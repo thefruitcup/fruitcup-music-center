@@ -12,8 +12,8 @@ Open Godot to the Project and once everything is done importing, you can get sta
 *When writing code, please keep your variables, functions, etc. in snake_case when in GDScript (Exlcuding Class Names, please have them in CamelCase).<br>
 Same applies when naming Nodes.*
 
-**I will not accept Fully/Semi-Fully AI Generated Code.**
-**Also, please use the No-UID Build provided, UIDs have caused consistent issues with classes failing to load and cluttering the filesystem.**
+**I will not accept Fully/Semi-Fully AI Generated Code.**<br>
+**Also, please use the No-UID Build provided, UIDs have caused consistent issues with classes failing to load and cluttering the filesystem.**<br>
 **PRs that include/use UIDs will not be accepted.**
 
 # Pull Requests
