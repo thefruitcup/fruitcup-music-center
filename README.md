@@ -24,12 +24,12 @@ Linux Support will most likely be limited as I do not have Linux, but the progra
 ### Features
 
 <ul>
-  <li>Audio Controls (No Repeat)</li>
+  <li>Audio Controls (No Repeat Yet)</li>
   <li>Directory Addition & Removal</li>
   <li>Music Information</li>
   <li>MP3, WAV & OGG Support</li>
-  <li>Now Playing Screen</li>
-  <li>Album Art & Default Album Art</li>
+  <li>Now Playing Screen *Not in Alpha 1</li>
+  <li>Album Art & Default Album Art *Not in Alpha 1</li>
 </ul>
 
 ### To Be Added
@@ -43,8 +43,8 @@ Linux Support will most likely be limited as I do not have Linux, but the progra
 </ul>
 
 # How to Compile
-First you'll need to download Godot Engine v4.6.1 Mono:<br>
-https://godotengine.org/download/archive/4.6.1-stable/
+First you'll need to download Godot Engine No-UID v4.6 Mono:<br>
+https://github.com/carlosfruitcup/godot-no-uids
 
 Clone the project:<br>
 ```git clone https://github.com/thefruitcup/fruitcup-music-center.git```

@@ -1,6 +1,6 @@
 # How to Contribute
-First you'll need to download Godot Engine v4.6.1 Mono:<br>
-https://godotengine.org/download/archive/4.6.1-stable/
+First you'll need to download Godot Engine v4.6 No-UID Mono:<br>
+https://github.com/carlosfruitcup/godot-no-uids
 
 Then you'll need a Code Editor capable of editting C# Code (If you're sticking to GDScript, skip this step.)
 
@@ -13,6 +13,8 @@ Open Godot to the Project and once everything is done importing, you can get sta
 Same applies when naming Nodes.*
 
 **I will not accept Fully/Semi-Fully AI Generated Code.**
+**Also, please use the No-UID Build provided, UIDs have caused consistent issues with classes failing to load and cluttering the filesystem.**
+**PRs that include/use UIDs will not be accepted.**
 
 # Pull Requests
 Pull Requests such as Bug Fixing, Feature Additions/Improvements, Documentation/General Improvements, etc. are welcomed!<br>
