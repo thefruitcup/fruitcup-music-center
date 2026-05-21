@@ -11,10 +11,12 @@ class_name WMCButton
 @export var extra_label_settings :LabelExtraSettings= LabelExtraSettings.new()
 @export var texture : Texture
 @export var viewport_padding :Vector2= Vector2.ZERO
+@export var use_theme_font :bool= true
 @onready var viewport_container :SubViewportContainer
 @onready var viewport :SubViewport
 @onready var label : Label
 @onready var texture_rect:TextureRect
+
 
 ##function should "func foo(hovered : bool, button : WMCButton) -> void"
 var button_hovered_function : Callable
@@ -30,6 +32,10 @@ func _ready() -> void:
 	if fire_on_button_up: button_up.connect(on_press)
 	mouse_entered.connect(on_mouse_hover)
 	mouse_exited.connect(on_mouse_left)
+	
+	#i guess godot is updating the viewport while it's not visible or doing some funky stuff that it's very obvious that it's not being cleared
+	#so we gotta force update it
+	if viewport: visibility_changed.connect(force_update_viewport)
 
 #Not intended for outside use
 func _create_label_viewport() -> void:
@@ -62,7 +68,7 @@ func _create_label_viewport() -> void:
 	label.label_settings = label_settings
 	label.material = extra_label_settings.material.duplicate(true)
 	
-	label.add_theme_font_override("SystemFont",get_theme_default_font())
+	if use_theme_font: label.add_theme_font_override("font",get_theme_default_font())
 	
 	#because the text gives the button it's proper size for grid container & this is simple enough for now
 	add_theme_color_override("font_color",Color.TRANSPARENT)
@@ -92,14 +98,27 @@ func wmc_set_disabled(toggle : bool) -> void:
 
 func on_mouse_hover() -> void:
 	if disabled: return
-	if label: label.modulate = extra_label_settings.hover
+	if label: 
+		label.modulate = extra_label_settings.hover
+		force_update_viewport()
+	
 	if texture_rect:texture_rect.modulate = extra_label_settings.hover
 	if button_hovered_function: button_hovered_function.call(true, self)
 
 func on_mouse_left() -> void:
 	if disabled: return
-	label.modulate = extra_label_settings.normal
+	if label: 
+		label.modulate = extra_label_settings.normal
+		force_update_viewport()
+	
+	if texture_rect: texture_rect.modulate = extra_label_settings.normal
 	if button_hovered_function: button_hovered_function.call(false, self)
+
+func force_update_viewport() -> void:
+	if !viewport: return
+	await RenderingServer.frame_post_draw
+	viewport.render_target_clear_mode = SubViewport.CLEAR_MODE_ONCE
+	viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 
 func on_press() -> void:
 	return

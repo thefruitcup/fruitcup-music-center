@@ -8,6 +8,7 @@ const PATH_META_STRING :String= "PATH"
 var dirs_music_loaded :Dictionary[String,PackedStringArray]={}
 var all_music_files_loaded :PackedStringArray
 var artists_files :Dictionary[String,PackedStringArray]
+var album_files :Dictionary[String,PackedStringArray]
 var current_queue_playing :PackedStringArray
 
 var audio : AudioStreamPlayer
@@ -85,6 +86,9 @@ func get_metadata(file :String= current_track_path) -> MetadataResource:
 func on_audio_file_clicked(file : String) -> void:
 	if file.is_empty(): return
 	if !FileAccess.file_exists(file): return
+	if file == current_track_path:
+		audio.play()
+		return
 	
 	match file.get_extension():
 		"ogg":

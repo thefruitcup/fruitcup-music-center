@@ -23,8 +23,9 @@
 [ext_resource type="AudioStream" uid="uid://d2uhed2bjxatl" path="res://assets/audio/fmc_startup.ogg" id="14_qsp4k"]
 [ext_resource type="Script" uid="uid://cow2o1esrju6q" path="res://scripts/visual/attribution_button.gd" id="15_kq58d"]
 [ext_resource type="Texture2D" uid="uid://3lrs4ccjpwjh" path="res://assets/textures/icon_processed_no_tex.png" id="16_seu75"]
+[ext_resource type="Script" path="res://scripts/visual/set_label_font_to_global.gd" id="18_a6jrf"]
 [ext_resource type="Script" path="res://scripts/backend/settings_button.gd" id="19_0odxb"]
-[ext_resource type="Texture2D" uid="uid://yxfkbmo34fbs" path="res://assets/textures/icon_preprocessed_no_tex.png" id="19_a6jrf"]
+[ext_resource type="Script" path="res://scripts/visual/scale_with_characters.gd" id="19_xuqvo"]
 [ext_resource type="Script" uid="uid://5jsxlhqhxsck" path="res://scripts/backend/get_cover_art_from_main.gd" id="23_d13ii"]
 [ext_resource type="Script" uid="uid://dvmsv7dnuhh7s" path="res://scripts/frontend/currently_playing_display_music_info.gd" id="24_1u8w0"]
 
@@ -126,7 +127,6 @@ font_size = 24
 script = ExtResource("5_82xsv")
 hover = Color(0.5449745, 0.54497427, 0.54497397, 1)
 horizontal = 0
-metadata/_custom_type_script = "uid://jscetr4jr0wj"
 
 [sub_resource type="Resource" id="Resource_m2tuh"]
 script = ExtResource("5_82xsv")
@@ -134,11 +134,13 @@ normal = Color(0.3254902, 0.50980395, 0.6745098, 1)
 hover = Color(0.90588236, 0.9137255, 0.92156863, 1)
 toggled = Color(0.8940509, 0, 0.4143862, 1)
 disable = Color(0, 0, 0.30588236, 1)
-metadata/_custom_type_script = "uid://jscetr4jr0wj"
+
+[sub_resource type="LabelSettings" id="LabelSettings_lswn8"]
+font_size = 40
+shadow_color = Color(0, 0, 0, 0.37254903)
+shadow_offset = Vector2(7.18, 5.06)
 
 [sub_resource type="LabelSettings" id="LabelSettings_lrokg"]
-shadow_color = Color(0, 0, 0, 0.08235294)
-shadow_offset = Vector2(1, 1.54)
 
 [sub_resource type="Resource" id="Resource_8v665"]
 script = ExtResource("5_82xsv")
@@ -151,6 +153,10 @@ normal = Color(0.827451, 0.827451, 0.827451, 1)
 hover = Color(0.56496185, 0.5649616, 0.5649613, 1)
 toggled = Color(0.3217278, 0.321728, 0.32172796, 1)
 disable = Color(0, 0, 0.30588236, 1)
+
+[sub_resource type="Resource" id="Resource_a6jrf"]
+script = ExtResource("5_82xsv")
+horizontal = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_eseco"]
 font_size = 32
@@ -452,7 +458,7 @@ offset_bottom = 185.0
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="WMCButton" type="Button" parent="main/ScrollContainer2/HBoxContainer" unique_id=2087783634]
+[node name="tracks" type="Button" parent="main/ScrollContainer2/HBoxContainer" unique_id=2087783634]
 modulate = Color(1, 1, 1, 0.35686275)
 layout_mode = 2
 text = "tracks"
@@ -460,28 +466,37 @@ script = ExtResource("11_lswn8")
 label_settings = SubResource("LabelSettings_0odxb")
 extra_label_settings = SubResource("Resource_lswn8")
 viewport_padding = Vector2(32, 16)
+use_theme_font = false
 
-[node name="WMCButton2" type="Button" parent="main/ScrollContainer2/HBoxContainer" unique_id=70880704 node_paths=PackedStringArray("music_grid_display")]
+[node name="artists" type="Button" parent="main/ScrollContainer2/HBoxContainer" unique_id=70880704 node_paths=PackedStringArray("looking_at_text", "music_grid_display")]
 process_priority = -5
 modulate = Color(1, 1, 1, 0.35686275)
 layout_mode = 2
 text = "artists"
 script = ExtResource("8_lswn8")
-music_grid_display = NodePath("../../../ScrollContainer")
+text_to_display = "artists"
+looking_at_text = NodePath("../../../looking_at/SubViewport/Label")
+music_grid_display = NodePath("../../../music_grid_display")
 label_settings = SubResource("LabelSettings_0odxb")
 extra_label_settings = SubResource("Resource_lswn8")
 viewport_padding = Vector2(32, 16)
+use_theme_font = false
 
-[node name="WMCButton3" type="Button" parent="main/ScrollContainer2/HBoxContainer" unique_id=449499335]
+[node name="albums" type="Button" parent="main/ScrollContainer2/HBoxContainer" unique_id=449499335 node_paths=PackedStringArray("looking_at_text", "music_grid_display")]
 modulate = Color(1, 1, 1, 0.35686275)
 layout_mode = 2
 text = "album"
-script = ExtResource("11_lswn8")
+script = ExtResource("8_lswn8")
+tag = "album"
+text_to_display = "albums"
+looking_at_text = NodePath("../../../looking_at/SubViewport/Label")
+music_grid_display = NodePath("../../../music_grid_display")
 label_settings = SubResource("LabelSettings_0odxb")
 extra_label_settings = SubResource("Resource_lswn8")
 viewport_padding = Vector2(32, 16)
+use_theme_font = false
 
-[node name="ScrollContainer" type="ScrollContainer" parent="main" unique_id=453480484]
+[node name="music_grid_display" type="ScrollContainer" parent="main" unique_id=453480484]
 process_priority = -4
 layout_mode = 1
 anchors_preset = -1
@@ -492,14 +507,14 @@ script = ExtResource("4_cegan")
 extra_label_settings = SubResource("Resource_m2tuh")
 metadata/_edit_use_anchors_ = true
 
-[node name="GridContainer" type="GridContainer" parent="main/ScrollContainer" unique_id=1281295290]
+[node name="GridContainer" type="GridContainer" parent="main/music_grid_display" unique_id=1281295290]
 layout_mode = 2
 theme_override_constants/h_separation = 128
 theme_override_constants/v_separation = 45
 columns = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="batch_creation_timer" type="Timer" parent="main/ScrollContainer" unique_id=822138910]
+[node name="batch_creation_timer" type="Timer" parent="main/music_grid_display" unique_id=822138910]
 wait_time = 0.05
 
 [node name="settings" type="Button" parent="main" unique_id=1347421022 node_paths=PackedStringArray("transition_from", "transition_to")]
@@ -513,6 +528,7 @@ text = "Settings                      "
 script = ExtResource("6_getpj")
 transition_from = NodePath("..")
 transition_to = NodePath("../../settings")
+use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="cover_art" type="TextureRect" parent="main" unique_id=2136239040]
@@ -610,6 +626,7 @@ stretch = true
 metadata/_edit_use_anchors_ = true
 
 [node name="SubViewport" type="SubViewport" parent="main/current_version" unique_id=1333637875]
+disable_3d = true
 transparent_bg = true
 handle_input_locally = false
 oversampling_override = 1.3
@@ -623,6 +640,41 @@ anchor_right = 0.7890625
 anchor_bottom = 0.92
 offset_right = -162.0
 text = "fruitcup music center a0.1"
+script = ExtResource("18_a6jrf")
+metadata/_edit_lock_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="looking_at" type="SubViewportContainer" parent="main" unique_id=1616643850]
+material = ExtResource("9_1u8w0")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.41921398
+anchor_top = 0.2660194
+anchor_right = 0.9956332
+anchor_bottom = 0.37669903
+mouse_filter = 2
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="main/looking_at" unique_id=1442844653]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+oversampling_override = 1.3
+size = Vector2i(528, 57)
+render_target_update_mode = 4
+
+[node name="Label" type="Label" parent="main/looking_at/SubViewport" unique_id=1776795657]
+modulate = Color(1, 1, 1, 0.13725491)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "tracks"
+label_settings = SubResource("LabelSettings_lswn8")
+horizontal_alignment = 2
+script = ExtResource("19_xuqvo")
 metadata/_edit_lock_ = true
 metadata/_edit_use_anchors_ = true
 
@@ -646,6 +698,7 @@ script = ExtResource("11_lswn8")
 fire_on_button_down = false
 label_settings = SubResource("LabelSettings_lrokg")
 extra_label_settings = SubResource("Resource_8v665")
+use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="stop" type="Button" parent="main/audio_controls" unique_id=157801093]
@@ -657,6 +710,7 @@ script = ExtResource("11_lswn8")
 fire_on_button_down = false
 label_settings = SubResource("LabelSettings_lrokg")
 extra_label_settings = SubResource("Resource_8v665")
+use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="skipForward" type="Button" parent="main/audio_controls" unique_id=1293916593]
@@ -668,6 +722,7 @@ script = ExtResource("11_lswn8")
 fire_on_button_down = false
 label_settings = SubResource("LabelSettings_lrokg")
 extra_label_settings = SubResource("Resource_8v665")
+use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="skipBack" type="Button" parent="main/audio_controls" unique_id=650340941]
@@ -679,6 +734,7 @@ script = ExtResource("11_lswn8")
 fire_on_button_down = false
 label_settings = SubResource("LabelSettings_lrokg")
 extra_label_settings = SubResource("Resource_8v665")
+use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="shuffle" type="Button" parent="main/audio_controls" unique_id=726832527]
@@ -693,6 +749,7 @@ script = ExtResource("11_lswn8")
 fire_on_button_down = false
 label_settings = SubResource("LabelSettings_lrokg")
 extra_label_settings = SubResource("Resource_8v665")
+use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="volumeup" type="Button" parent="main/audio_controls" unique_id=21623615]
@@ -704,6 +761,7 @@ script = ExtResource("11_lswn8")
 fire_on_button_down = false
 label_settings = SubResource("LabelSettings_lrokg")
 extra_label_settings = SubResource("Resource_8v665")
+use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="volumedown" type="Button" parent="main/audio_controls" unique_id=1299734792]
@@ -715,17 +773,8 @@ script = ExtResource("11_lswn8")
 fire_on_button_down = false
 label_settings = SubResource("LabelSettings_lrokg")
 extra_label_settings = SubResource("Resource_8v665")
+use_theme_font = false
 metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="main" unique_id=1006119435]
-material = ExtResource("9_1u8w0")
-layout_mode = 0
-offset_left = -208.0
-offset_top = -143.0
-offset_right = -16.0
-offset_bottom = 49.0
-texture = ExtResource("19_a6jrf")
-expand_mode = 1
 
 [node name="settings" type="Control" parent="." unique_id=1737178802]
 visible = false
@@ -796,13 +845,14 @@ vertical_alignment = 1
 
 [node name="add_directory" type="Button" parent="settings" unique_id=1024765318]
 layout_mode = 0
-offset_left = 396.0
+offset_left = 424.0
 offset_top = 169.0
-offset_right = 588.0
+offset_right = 576.0
 offset_bottom = 193.0
-text = "Add Directory      "
+text = "Add Directory"
 script = ExtResource("11_lswn8")
 fire_on_button_down = false
+extra_label_settings = SubResource("Resource_a6jrf")
 
 [node name="FileDialog" type="FileDialog" parent="settings/add_directory" unique_id=1276784476]
 oversampling_override = 1.0
@@ -813,26 +863,29 @@ use_native_dialog = true
 
 [node name="remove_directory" type="Button" parent="settings" unique_id=1267523360]
 layout_mode = 0
-offset_left = 398.0
+offset_left = 424.0
 offset_top = 193.0
-offset_right = 590.0
+offset_right = 576.0
 offset_bottom = 216.0
-text = "Remove Directory"
+text = "Remove Directory "
 script = ExtResource("11_lswn8")
 fire_on_button_down = false
+extra_label_settings = SubResource("Resource_a6jrf")
 
 [node name="return" type="Button" parent="settings" unique_id=27265268 node_paths=PackedStringArray("transition_from", "transition_to")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.4628821
+anchor_left = 0.4366812
 anchor_top = 0.4213592
 anchor_right = 0.6295488
 anchor_bottom = 0.46601942
-text = "Return                          "
+offset_left = 24.0
+offset_right = -0.666687
+text = "Return"
 script = ExtResource("6_getpj")
 transition_from = NodePath("..")
 transition_to = NodePath("../../main")
-metadata/_edit_use_anchors_ = true
+extra_label_settings = SubResource("Resource_a6jrf")
 
 [node name="attributions" type="Button" parent="settings" unique_id=628104806 node_paths=PackedStringArray("transition_from", "transition_to")]
 modulate = Color(1, 1, 1, 0.35686275)
@@ -850,6 +903,7 @@ text = "Attributions"
 script = ExtResource("6_getpj")
 transition_from = NodePath("..")
 transition_to = NodePath("../../attributions")
+use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="bugreport" type="Button" parent="settings" unique_id=1139396824]
@@ -868,6 +922,7 @@ text = "Report an Issue"
 script = ExtResource("11_lswn8")
 fire_on_button_down = false
 viewport_padding = Vector2(12, 0)
+use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="setup" type="Control" parent="." unique_id=238653360]
@@ -2118,6 +2173,7 @@ script = ExtResource("11_lswn8")
 fire_on_button_down = false
 label_settings = SubResource("LabelSettings_lrokg")
 extra_label_settings = SubResource("Resource_8v665")
+use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="stop" type="Button" parent="currentlyplaying/audio_controls" unique_id=2080936604]
@@ -2129,6 +2185,7 @@ script = ExtResource("11_lswn8")
 fire_on_button_down = false
 label_settings = SubResource("LabelSettings_lrokg")
 extra_label_settings = SubResource("Resource_8v665")
+use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="skipForward" type="Button" parent="currentlyplaying/audio_controls" unique_id=984941268]
@@ -2140,6 +2197,7 @@ script = ExtResource("11_lswn8")
 fire_on_button_down = false
 label_settings = SubResource("LabelSettings_lrokg")
 extra_label_settings = SubResource("Resource_8v665")
+use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="skipBack" type="Button" parent="currentlyplaying/audio_controls" unique_id=93211324]
@@ -2151,6 +2209,7 @@ script = ExtResource("11_lswn8")
 fire_on_button_down = false
 label_settings = SubResource("LabelSettings_lrokg")
 extra_label_settings = SubResource("Resource_8v665")
+use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="shuffle" type="Button" parent="currentlyplaying/audio_controls" unique_id=2075452417]
@@ -2165,6 +2224,7 @@ script = ExtResource("11_lswn8")
 fire_on_button_down = false
 label_settings = SubResource("LabelSettings_lrokg")
 extra_label_settings = SubResource("Resource_8v665")
+use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="volumeup" type="Button" parent="currentlyplaying/audio_controls" unique_id=337974643]
@@ -2176,6 +2236,7 @@ script = ExtResource("11_lswn8")
 fire_on_button_down = false
 label_settings = SubResource("LabelSettings_lrokg")
 extra_label_settings = SubResource("Resource_8v665")
+use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="volumedown" type="Button" parent="currentlyplaying/audio_controls" unique_id=572791821]
@@ -2187,6 +2248,7 @@ script = ExtResource("11_lswn8")
 fire_on_button_down = false
 label_settings = SubResource("LabelSettings_lrokg")
 extra_label_settings = SubResource("Resource_8v665")
+use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="settings" type="Button" parent="currentlyplaying" unique_id=1234743101 node_paths=PackedStringArray("transition_from", "transition_to")]
@@ -2200,8 +2262,10 @@ text = "Return                         "
 script = ExtResource("6_getpj")
 transition_from = NodePath("..")
 transition_to = NodePath("../../main")
+use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
-[connection signal="button_up" from="main/ScrollContainer2/HBoxContainer/WMCButton" to="main/ScrollContainer" method="update_grid"]
-[connection signal="timeout" from="main/ScrollContainer/batch_creation_timer" to="main/ScrollContainer" method="_on_batch_creation_timer_timeout"]
+[connection signal="button_up" from="main/ScrollContainer2/HBoxContainer/tracks" to="main/music_grid_display" method="update_grid"]
+[connection signal="button_up" from="main/ScrollContainer2/HBoxContainer/tracks" to="main/looking_at/SubViewport/Label" method="set_text" binds= ["tracks"]]
+[connection signal="timeout" from="main/music_grid_display/batch_creation_timer" to="main/music_grid_display" method="_on_batch_creation_timer_timeout"]
 [connection signal="button_down" from="settings/bugreport" to="settings" method="_on_bugreport_button_down"]

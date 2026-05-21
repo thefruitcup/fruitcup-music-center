@@ -45,6 +45,26 @@ public partial class MusicGridDisplayHelper : Node
 		return artist_files;
 	}
 
+	static public Dictionary<String, Array<String>> ReturnAlbum(Array<String> files_to_load)
+	{
+		Dictionary<String,Array<String>> album_files = new Dictionary<string, Array<string>>();
+
+		foreach(string file in files_to_load)
+		{
+			string album = (string)MetadataHandler.GetTag(file, "album");
+
+			if (!album_files.ContainsKey(album))
+			{
+				album_files.Add(album, []);
+			}
+			
+			album_files[album].Add(file);
+
+		}
+
+		return album_files;
+	}
+
     static public Button CreateButton(string file, Boolean use_metadata)
 	{
 		Button button = new Button();

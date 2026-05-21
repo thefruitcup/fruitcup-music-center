@@ -38,10 +38,9 @@ func clear_grid() -> void:
 		grid_container = grid_container_clone.duplicate()
 		add_child(grid_container)
 	
-	if music_files_to_load.size() <= 0: return
-	
 	current_sub_grid_container = GridContainer.new()
 	grid_container.add_child(current_sub_grid_container)
+
 
 func update_grid(
 		music_files :PackedStringArray= Global.all_music_files_loaded, 
