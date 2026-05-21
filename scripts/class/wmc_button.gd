@@ -103,8 +103,3 @@ func on_mouse_left() -> void:
 
 func on_press() -> void:
 	return
-
-func _process(delta: float) -> void:
-	if Engine.get_frames_drawn() % 32 != 0: return
-	
-	print(visible)

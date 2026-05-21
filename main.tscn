@@ -2,31 +2,31 @@
 
 [ext_resource type="Texture2D" uid="uid://dcfvjgegfphmm" path="res://assets/textures/button_00.png" id="1_2cqfq"]
 [ext_resource type="SystemFont" uid="uid://d0isnreglbkdf" path="res://assets/misc/windows_font.tres" id="1_074og"]
-[ext_resource type="Script" uid="uid://bjo2lqvp75dq2" path="res://scripts/backend/handle_theme.gd" id="2_074og"]
+[ext_resource type="Script" uid="uid://benjtjhlxieh2" path="res://scripts/backend/handle_theme.gd" id="2_074og"]
 [ext_resource type="Texture2D" uid="uid://tkf7f4de7qad" path="res://assets/textures/background_00.png" id="2_yaehf"]
 [ext_resource type="Shader" uid="uid://k12xpcn7wp3n" path="res://shaders/background_0.gdshader" id="3_074og"]
 [ext_resource type="Script" uid="uid://bwsid3tq3qkcd" path="res://scripts/frontend/music_grid_display.gd" id="4_cegan"]
-[ext_resource type="Script" uid="uid://jscetr4jr0wj" path="res://scripts/backend/extra_label_settings_resource.gd" id="5_82xsv"]
-[ext_resource type="Script" uid="uid://cnuytbeymawie" path="res://scripts/visual/transition_to_screen.gd" id="6_getpj"]
-[ext_resource type="Script" uid="uid://gdrufqkfjbvl" path="res://scripts/frontend/display_music_info.gd" id="7_ryguw"]
-[ext_resource type="Script" uid="uid://cpvidt3y5iq4r" path="res://scripts/frontend/timeline.gd" id="8_d13ii"]
+[ext_resource type="Script" path="res://scripts/backend/extra_label_settings_resource.gd" id="5_82xsv"]
+[ext_resource type="Script" uid="uid://cxp7tjqkbloi5" path="res://scripts/visual/transition_to_screen.gd" id="6_getpj"]
+[ext_resource type="Script" uid="uid://c4c646l4an6gb" path="res://scripts/frontend/display_music_info.gd" id="7_ryguw"]
+[ext_resource type="Script" uid="uid://ghcns8j0qrxk" path="res://scripts/frontend/timeline.gd" id="8_d13ii"]
 [ext_resource type="Script" uid="uid://cgna28hakso53" path="res://scripts/frontend/artist_sort_button.gd" id="8_lswn8"]
 [ext_resource type="Material" uid="uid://dawdpb57ngxq" path="res://shaders/text_gradient_fade_into_background.material" id="9_1u8w0"]
-[ext_resource type="Script" uid="uid://c8dcqtwqha3wx" path="res://scripts/frontend/audio_controls.gd" id="10_0odxb"]
+[ext_resource type="Script" path="res://scripts/frontend/audio_controls.gd" id="10_0odxb"]
 [ext_resource type="Texture2D" uid="uid://dwrboxkjypke8" path="res://assets/textures/cover_art_shadow.png" id="10_82xsv"]
 [ext_resource type="Texture2D" uid="uid://bp8o2xfrjemp6" path="res://icon.svg" id="11_cegan"]
-[ext_resource type="Script" uid="uid://dvsit5rs0q58h" path="res://scripts/tools/export_texture.gd" id="11_getpj"]
+[ext_resource type="Script" uid="uid://b06o5xudmje17" path="res://scripts/tools/export_texture.gd" id="11_getpj"]
 [ext_resource type="Script" uid="uid://dyydykg7s7sxn" path="res://scripts/class/wmc_button.gd" id="11_lswn8"]
 [ext_resource type="Texture2D" uid="uid://cg8vkm5kqeoks" path="res://assets/textures/cover_art_border.png" id="11_ryguw"]
-[ext_resource type="Script" uid="uid://cmpefhypjb40o" path="res://scripts/backend/setup_settings.gd" id="12_a6jrf"]
-[ext_resource type="Script" uid="uid://cx0pbdm86vrgk" path="res://scripts/backend/first_time_setup.gd" id="13_xuqvo"]
+[ext_resource type="Script" uid="uid://cfmshqdikgfw7" path="res://scripts/backend/setup_settings.gd" id="12_a6jrf"]
+[ext_resource type="Script" uid="uid://b67qi5f8c6s1" path="res://scripts/backend/first_time_setup.gd" id="13_xuqvo"]
 [ext_resource type="AudioStream" uid="uid://d2uhed2bjxatl" path="res://assets/audio/fmc_startup.ogg" id="14_qsp4k"]
-[ext_resource type="Script" uid="uid://e6lpj32opff1" path="res://scripts/visual/attribution_button.gd" id="15_kq58d"]
+[ext_resource type="Script" uid="uid://cow2o1esrju6q" path="res://scripts/visual/attribution_button.gd" id="15_kq58d"]
 [ext_resource type="Texture2D" uid="uid://3lrs4ccjpwjh" path="res://assets/textures/icon_processed_no_tex.png" id="16_seu75"]
-[ext_resource type="Script" uid="uid://b4i7m162s4sro" path="res://scripts/backend/settings_button.gd" id="19_0odxb"]
+[ext_resource type="Script" path="res://scripts/backend/settings_button.gd" id="19_0odxb"]
 [ext_resource type="Texture2D" uid="uid://yxfkbmo34fbs" path="res://assets/textures/icon_preprocessed_no_tex.png" id="19_a6jrf"]
-[ext_resource type="Script" uid="uid://q82a746qw7gi" path="res://scripts/backend/get_cover_art_from_main.gd" id="23_d13ii"]
-[ext_resource type="Script" uid="uid://b4jsp5ews62c0" path="res://scripts/frontend/currently_playing_display_music_info.gd" id="24_1u8w0"]
+[ext_resource type="Script" uid="uid://5jsxlhqhxsck" path="res://scripts/backend/get_cover_art_from_main.gd" id="23_d13ii"]
+[ext_resource type="Script" uid="uid://dvmsv7dnuhh7s" path="res://scripts/frontend/currently_playing_display_music_info.gd" id="24_1u8w0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lrokg"]
 
@@ -460,7 +460,6 @@ script = ExtResource("11_lswn8")
 label_settings = SubResource("LabelSettings_0odxb")
 extra_label_settings = SubResource("Resource_lswn8")
 viewport_padding = Vector2(32, 16)
-metadata/_custom_type_script = "uid://cpe5dhq7c2c1r"
 
 [node name="WMCButton2" type="Button" parent="main/ScrollContainer2/HBoxContainer" unique_id=70880704 node_paths=PackedStringArray("music_grid_display")]
 process_priority = -5
@@ -472,7 +471,6 @@ music_grid_display = NodePath("../../../ScrollContainer")
 label_settings = SubResource("LabelSettings_0odxb")
 extra_label_settings = SubResource("Resource_lswn8")
 viewport_padding = Vector2(32, 16)
-metadata/_custom_type_script = "uid://cpe5dhq7c2c1r"
 
 [node name="WMCButton3" type="Button" parent="main/ScrollContainer2/HBoxContainer" unique_id=449499335]
 modulate = Color(1, 1, 1, 0.35686275)
@@ -482,7 +480,6 @@ script = ExtResource("11_lswn8")
 label_settings = SubResource("LabelSettings_0odxb")
 extra_label_settings = SubResource("Resource_lswn8")
 viewport_padding = Vector2(32, 16)
-metadata/_custom_type_script = "uid://cpe5dhq7c2c1r"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="main" unique_id=453480484]
 process_priority = -4
@@ -617,6 +614,7 @@ transparent_bg = true
 handle_input_locally = false
 oversampling_override = 1.3
 size = Vector2i(256, 25)
+render_target_update_mode = 4
 
 [node name="Label" type="Label" parent="main/current_version/SubViewport" unique_id=1538716249]
 modulate = Color(1, 1, 1, 0.13725491)

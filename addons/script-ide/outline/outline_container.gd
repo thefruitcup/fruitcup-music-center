@@ -24,9 +24,9 @@ const CONSTANTS: StringName = &"Constants"
 const DEFAULT_ORDER: PackedStringArray = [ENGINE_FUNCS, FUNCS, SIGNALS, EXPORTED, PROPERTIES, CONSTANTS, CLASSES]
 #endregion
 
-const OutlineButton := preload("uid://b4hsdw1mw0fnb")
+const OutlineButton := preload("res://addons/script-ide/outline/outline_button.gd")
 
-const Plugin := preload("uid://boejrfu4701rv")
+const Plugin := preload("res://addons/script-ide/plugin.gd")
 
 @onready var filter_box: HBoxContainer = %FilterBox
 @onready var outline: ItemList = %Outline

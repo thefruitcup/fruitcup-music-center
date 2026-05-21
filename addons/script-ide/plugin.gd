@@ -15,19 +15,19 @@ extends EditorPlugin
 const BUILT_IN_SCRIPT: StringName = &"::GDScript"
 const QUICK_OPEN_INTERVAL: int = 400
 
-const MULTILINE_TAB_BAR: PackedScene = preload("uid://bken27i2r3o0g")
-const MultilineTabBar := preload("uid://dwfkctl5dxgd2")
+const MULTILINE_TAB_BAR: PackedScene = preload("res://addons/script-ide/tabbar/multiline_tab_bar.tscn")
+const MultilineTabBar := preload("res://addons/script-ide/tabbar/multiline_tab_bar.gd")
 
-const QUICK_OPEN_SCENE: PackedScene = preload("uid://ru4s0n6swm5i")
-const QuickOpenPopup := preload("uid://btlq1m6kgrtuy")
+const QUICK_OPEN_SCENE: PackedScene = preload("res://addons/script-ide/quickopen/quick_open_popup.tscn")
+const QuickOpenPopup := preload("res://addons/script-ide/quickopen/quick_open_popup.gd")
 
-const OVERRIDE_SCENE: PackedScene = preload("uid://1ln6cmuaia5f")
-const OverridePopup := preload("uid://bkq8cbqd5y2dd")
+const OVERRIDE_SCENE: PackedScene = preload("res://addons/script-ide/override/override_popup.tscn")
+const OverridePopup := preload("res://addons/script-ide/override/override_popup.gd")
 
-const OUTLINE_CONTAINER_SCENE: PackedScene = preload("uid://ck63poq78nakf")
-const OutlineContainer := preload("uid://ofmvd5e6anuq")
+const OUTLINE_CONTAINER_SCENE: PackedScene = preload("res://addons/script-ide/outline/outline_container.tscn")
+const OutlineContainer := preload("res://addons/script-ide/outline/outline_container.gd")
 
-const SplitCodeEdit := preload("uid://cycj0xoygcfsd")
+const SplitCodeEdit := preload("res://addons/script-ide/split/split_code_edit.gd")
 
 #region Settings and Shortcuts
 ## Editor setting path

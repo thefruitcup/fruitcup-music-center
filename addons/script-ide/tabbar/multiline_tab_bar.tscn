@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://lxwm5m55vf1l"]
 
 [ext_resource type="Script" path="res://addons/script-ide/tabbar/multiline_tab_bar.gd" id="1_8jr3v"]
 
@@ -7,8 +7,10 @@ content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.5
 content_margin_bottom = 0.0
-bg_color = Color(0.082627445, 0.082627445, 0.082627445, 1)
-corner_detail = 1
+bg_color = Color(0.07888999, 0.07888999, 0.07888999, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_detail = 4
 
 [sub_resource type="DPITexture" id="DPITexture_split"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"M7.5 0v16h1V0z\"/></svg>"

@@ -21,3 +21,4 @@ mono_crash.*.json
 
 .export/*
 *.tmp
+*.uid
