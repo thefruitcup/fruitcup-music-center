@@ -35,7 +35,7 @@ func _ready() -> void:
 	
 	#i guess godot is updating the viewport while it's not visible or doing some funky stuff that it's very obvious that it's not being cleared
 	#so we gotta force update it
-	if viewport: visibility_changed.connect(force_update_viewport)
+	visibility_changed.connect(force_update_viewport)
 
 #Not intended for outside use
 func _create_label_viewport() -> void:
@@ -45,14 +45,13 @@ func _create_label_viewport() -> void:
 	#not the text itself
 	#this does (fortunately?) give us that blurry look when we fullscreen the window though
 	viewport = SubViewport.new()
+	viewport.transparent_bg = true
+	viewport.disable_3d = true
+	
 	viewport_container =SubViewportContainer.new()
 	viewport_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 	viewport_container.add_child(viewport)
-	viewport.render_target_clear_mode = SubViewport.CLEAR_MODE_ALWAYS
-	viewport.render_target_update_mode = SubViewport.UPDATE_WHEN_VISIBLE
-	viewport.transparent_bg = true
-	viewport.disable_3d = true
 	
 	viewport.size = size + viewport_padding
 	viewport_container.size = size + viewport_padding
@@ -80,6 +79,9 @@ func _create_label_viewport() -> void:
 	add_theme_color_override("font_outline_color",Color.TRANSPARENT)
 	viewport.add_child(label)
 	add_child(viewport_container)
+	
+	viewport.render_target_clear_mode = SubViewport.CLEAR_MODE_ONCE
+	viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 
 func _create_texture() -> void:
 	if texture_rect: return
@@ -117,6 +119,7 @@ func on_mouse_left() -> void:
 func force_update_viewport() -> void:
 	if !viewport: return
 	await RenderingServer.frame_post_draw
+	await RenderingServer.frame_post_draw #double up or else the non-music buttons just show up strangely
 	viewport.render_target_clear_mode = SubViewport.CLEAR_MODE_ONCE
 	viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 

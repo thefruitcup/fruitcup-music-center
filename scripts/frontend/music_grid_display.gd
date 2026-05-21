@@ -63,6 +63,12 @@ func update_grid(
 	last_index_load = 0
 	batch_creation_timer.start()
 
+func stop_batch() -> void:
+	batch_creation_timer.stop()
+	
+	#so the current batch in process stops once it thinks we're over the limit (yes, adding 1 was not enough and 16 came next)
+	last_index_load = music_files_to_load.size() + 16
+
 #Weird, sometimes this function lags the fuck out of FMC,
 #and other times it doesn't. Should figure out why that is
 func _on_batch_creation_timer_timeout() -> void:

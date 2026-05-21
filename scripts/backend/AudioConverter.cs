@@ -13,7 +13,7 @@ public partial class AudioConverter : Node
 		u/farhil
 		https://www.reddit.com/r/godot/comments/173q971/comment/k455bzu/
 	*/
-	static class AsyncHelper
+	static public class AsyncHelper
 	{
 		private static readonly TaskFactory _myTaskFactory = new
 		  TaskFactory(CancellationToken.None,
@@ -56,11 +56,11 @@ public partial class AudioConverter : Node
 		Thread thread = new Thread(delegate ()
 		{
 			AsyncHelper.RunSync(() => Convert(file));
-		});	
+		});		
 
 		thread.Priority = ThreadPriority.Highest;
 		thread.Start();
-
+	
 		return track;
 	}
 
