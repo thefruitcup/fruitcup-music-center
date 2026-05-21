@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cy0golessm8us"]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://addons/script-ide/tabbar/multiline_tab_bar.gd" id="1_8jr3v"]
 

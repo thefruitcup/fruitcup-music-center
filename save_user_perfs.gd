@@ -62,7 +62,7 @@ func load_config() -> void:
 	settings = config.get_value(MAIN_SETTINGS_STRING,MAIN_SETTINGS_STRING,{} as Dictionary[String,Variant])
 	
 	for dir : String in config.get_value(MAIN_MUSIC_STRING, "dirs", []):
-		Global.add_directory(dir,DirAccess.get_files_at(dir))
+		Global.add_directory(dir,DirAccess.get_files_at(dir),false)
 	
 	AudioServer.set_bus_volume_db(0,config.get_value(MAIN_MUSIC_STRING,"volume",0))
 	
@@ -71,3 +71,6 @@ func load_config() -> void:
 	Global.audio.seek(config.get_value(MAIN_MUSIC_STRING,"song_position",0))
 	Global.audio.stream_paused = true
 	first_time = false
+
+func return_setting(setting : String, default_value : Variant) -> Variant:
+	return settings.get(setting, default_value)

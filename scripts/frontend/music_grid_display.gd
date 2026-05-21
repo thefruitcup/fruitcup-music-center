@@ -44,17 +44,22 @@ func clear_grid() -> void:
 	grid_container.add_child(current_sub_grid_container)
 
 func update_grid(
-	music_files :PackedStringArray= Global.all_music_files_loaded, 
-	load_music_files :bool= true,
-	callable :Callable= Global.on_audio_file_clicked) -> void:
+		music_files :PackedStringArray= Global.all_music_files_loaded, 
+		load_music_files :bool= true,
+		callable :Callable= Global.on_audio_file_clicked
+) -> void:
+	
 	clear_grid()
 	
 	start_time = Time.get_unix_time_from_system()
 	Console.print_multiple("\n\nStart Time: ",start_time)
 	
+	
 	music_files_to_load = music_files
 	is_music_files = load_music_files
 	music_button_call = callable
+	
+	if is_music_files: Global.current_queue_playing = music_files_to_load
 	
 	last_index_load = 0
 	batch_creation_timer.start()
@@ -67,50 +72,7 @@ func _on_batch_creation_timer_timeout() -> void:
 			break
 		
 		var file :String= music_files_to_load[last_index_load]
-		var button :WMCButton= WMCButton.new()
-		var music_name :String= ""
-		
-		if UserPrefs.settings.get("use_metadata_title_for_buttons",false) && is_music_files:
-			music_name = MetadataHandler.GetTag(file,"title")
-		
-		if music_name.is_empty():
-			music_name = file.get_file().get_basename()
-		
-		var add_gradient : bool = false
-		
-		if music_name.length() >= AUTO_GRADIENT_TITLE_CHARS:
-			add_gradient = true
-		
-		if music_name.length() > MAX_SONG_TITLE_CHARS:
-			music_name = music_name.erase(MAX_SONG_TITLE_CHARS,music_name.length())
-			
-		
-		button.text = music_name
-		button.fire_on_button_down = false
-		button.fire_on_button_up = false
-		button.button_hovered_function = music_button_hover
-		button.extra_label_settings = extra_label_settings
-		button.viewport_padding = Vector2(16,0)
-		
-		current_sub_grid_container.add_child(button)
-		
-		button.label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
-		#Labels within Viewports don't recieve the Parent's Theme
-		#Should really fix this within WMCButton, but this works for now and I'm a little tired of
-		#getting the gradient to work and not look like complete shit
-		button.label.theme = (get_parent().get_parent() as Control).theme
-		
-		button.button_down.connect(music_button_call.bind(file))
-		
-		if add_gradient: button.viewport_container.material = shader_material.duplicate(true)
-		
-		if (current_sub_grid_container.get_child_count() == MAX_SONGS_PER_COLUMN):
-			current_sub_grid_container = GridContainer.new()
-			grid_container.add_child(current_sub_grid_container)
-		
-		#to force the shader & color to apply
-		button.on_mouse_left()
-		music_button_hover(false,button)
+		create_button(file)
 		
 		last_index_load += 1
 	
@@ -133,3 +95,52 @@ func music_button_hover(hovered : bool, button : WMCButton) -> void:
 	if not current_shader_material: return
 	
 	current_shader_material.set_shader_parameter("modulate",button.label.modulate)
+
+func create_button(file : String, callable :Callable= music_button_call, this_is_a_music_file:bool= is_music_files) -> WMCButton:
+	var button :WMCButton= MusicGridDisplayHelper.CreateButton(file, UserPrefs.settings.get("use_metadata_title_for_buttons",false) && this_is_a_music_file)
+	
+	var add_gradient : bool = false
+	
+	if button.text.length() >= AUTO_GRADIENT_TITLE_CHARS:
+		add_gradient = true
+	
+	if button.text.length() > MAX_SONG_TITLE_CHARS:
+		button.text = button.text.erase(MAX_SONG_TITLE_CHARS,button.text.length())
+	
+	button.fire_on_button_down = false
+	button.fire_on_button_up = false
+	button.button_hovered_function = music_button_hover
+	button.extra_label_settings = extra_label_settings
+	button.viewport_padding = Vector2(16,0)
+		
+	current_sub_grid_container.add_child(button)
+	
+	button.label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	
+	#Labels within Viewports don't recieve the Parent's Theme
+	#Should really fix this within WMCButton, but this works for now and I'm a little tired of
+	#getting the gradient to work and not look like complete shit
+	button.label.theme = (get_parent().get_parent() as Control).theme
+	
+	button.button_down.connect(callable.bind(file))
+	if this_is_a_music_file:
+		button.button_down.connect(highlight_track_playing)
+	
+	if add_gradient: button.viewport_container.material = shader_material.duplicate(true)
+	
+	if (current_sub_grid_container.get_child_count() == MAX_SONGS_PER_COLUMN):
+		current_sub_grid_container = GridContainer.new()
+		grid_container.add_child(current_sub_grid_container)
+	
+	#if is_music_files: highlight_track_playing(current_sub_grid_container)
+	
+	#to force the shader & color to apply
+	button.on_mouse_left()
+	music_button_hover(false,button)
+	return button
+
+func highlight_track_playing(sub_container : GridContainer) -> void:
+	for button : WMCButton in sub_container.get_children():
+		button.extra_label_settings.normal = extra_label_settings.normal
+		if button.label.text == Global.current_track_path.get_file().get_basename():
+			button.extra_label_settings.normal = extra_label_settings.toggled

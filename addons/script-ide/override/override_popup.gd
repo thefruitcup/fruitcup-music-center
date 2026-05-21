@@ -5,8 +5,8 @@ extends PopupPanel
 
 const FUNC_META: StringName = &"func"
 
-const Plugin := preload("uid://1rb0y8f52l4g")
-const OutlineContainer := preload("uid://c3f13d4bx2ep1")
+const Plugin := preload("uid://boejrfu4701rv")
+const OutlineContainer := preload("uid://ofmvd5e6anuq")
 
 @onready var filter_txt: LineEdit = %FilterTxt
 @onready var class_func_tree: Tree = %ClassFuncTree

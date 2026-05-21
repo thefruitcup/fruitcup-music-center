@@ -38,7 +38,7 @@ func stop_audio() -> void:
 	Global.current_track_path = ""
 
 func skip(backward : bool = false) -> void:
-	if Global.all_music_files_loaded.size() <= 0: return 
+	if Global.current_queue_playing.size() <= 0: return 
 	
 	if backward && Global.audio.get_playback_position() > RESTART_MUSIC_TIME:
 		Global.audio.seek(0)
@@ -48,37 +48,41 @@ func skip(backward : bool = false) -> void:
 		shuffle_skip(backward)
 		return
 	
-	var idx :int= Global.all_music_files_loaded.find(Global.current_track_path) + (1 if not backward else -1)
+	var idx :int= Global.current_queue_playing.find(Global.current_track_path) + (1 if not backward else -1)
 	
-	if idx > Global.all_music_files_loaded.size() - 1: idx = 0
-	if idx < 0: idx = Global.all_music_files_loaded.size() - 1
+	if idx > Global.current_queue_playing.size() - 1: idx = 0
+	if idx < 0: idx = Global.current_queue_playing.size() - 1
 	
-	Global.on_audio_file_clicked(Global.all_music_files_loaded[idx])
+	Global.on_audio_file_clicked(Global.current_queue_playing[idx])
 
 func shuffle_skip(backward : bool = false) -> void:
 	var idx : int
+	var queue :PackedStringArray= Global.current_queue_playing
+	
+	if !Global.current_track_path in queue:
+		Global.shuffle_queue.clear()
 	
 	if !backward:
-		idx = Global.all_music_files_loaded.find(Global.current_track_path)
+		idx = queue.find(Global.current_track_path)
 		
 		var attempts :int= 0
 		
-		while Global.all_music_files_loaded[idx] in Global.shuffle_queue:
-			idx = randi_range(0,Global.all_music_files_loaded.size() - 1)
+		while queue[idx] in Global.shuffle_queue:
+			idx = randi_range(0,queue.size() - 1)
 			attempts += 1
 			if attempts >= MAX_SHUFFLE_ATTEMPTS: break
 		
-		Global.shuffle_queue.append(Global.all_music_files_loaded[idx])
-		Global.on_audio_file_clicked(Global.all_music_files_loaded[idx])
+		Global.shuffle_queue.append(queue[idx])
+		Global.on_audio_file_clicked(queue[idx])
 	else: 
 		idx = Global.shuffle_queue.find(Global.current_track_path) - 1
 		
 		if idx <= -1: #so we at least load something, even if it's not a randomly selected song
-			idx = Global.all_music_files_loaded.find(Global.current_track_path) + (1 if not backward else -1)
+			idx = queue.find(Global.current_track_path) + (1 if not backward else -1)
 			
-			if idx > Global.all_music_files_loaded.size() - 1: idx = 0
-			if idx < 0: idx = Global.all_music_files_loaded.size() - 1
-			Global.on_audio_file_clicked(Global.all_music_files_loaded[idx])
+			if idx > queue.size() - 1: idx = 0
+			if idx < 0: idx = queue.size() - 1
+			Global.on_audio_file_clicked(queue[idx])
 		else:
 			Global.on_audio_file_clicked(Global.shuffle_queue[idx])
 		

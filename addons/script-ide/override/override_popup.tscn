@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dx4go87acgi3s"]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://addons/script-ide/override/override_popup.gd" id="1_54se3"]
 

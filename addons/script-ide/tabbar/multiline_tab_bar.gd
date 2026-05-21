@@ -5,7 +5,7 @@ extends PanelContainer
 const CLOSE_BTN_SPACER: String = "    "
 
 const CustomTab := preload("uid://dc6fayd0xh5k")
-const Plugin := preload("uid://1rb0y8f52l4g")
+const Plugin := preload("uid://boejrfu4701rv")
 
 @onready var multiline_tab_bar: HFlowContainer = %MultilineTabBar
 @onready var split_btn: Button = %SplitBtn

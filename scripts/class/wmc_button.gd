@@ -44,8 +44,9 @@ func _create_label_viewport() -> void:
 	
 	viewport_container.add_child(viewport)
 	viewport.render_target_clear_mode = SubViewport.CLEAR_MODE_ALWAYS
-	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	viewport.render_target_update_mode = SubViewport.UPDATE_WHEN_VISIBLE
 	viewport.transparent_bg = true
+	viewport.disable_3d = true
 	
 	viewport.size = size + viewport_padding
 	viewport_container.size = size + viewport_padding
@@ -102,3 +103,8 @@ func on_mouse_left() -> void:
 
 func on_press() -> void:
 	return
+
+func _process(delta: float) -> void:
+	if Engine.get_frames_drawn() % 32 != 0: return
+	
+	print(visible)

@@ -26,7 +26,7 @@ const DEFAULT_ORDER: PackedStringArray = [ENGINE_FUNCS, FUNCS, SIGNALS, EXPORTED
 
 const OutlineButton := preload("uid://b4hsdw1mw0fnb")
 
-const Plugin := preload("uid://1rb0y8f52l4g")
+const Plugin := preload("uid://boejrfu4701rv")
 
 @onready var filter_box: HBoxContainer = %FilterBox
 @onready var outline: ItemList = %Outline

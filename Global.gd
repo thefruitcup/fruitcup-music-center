@@ -8,6 +8,7 @@ const PATH_META_STRING :String= "PATH"
 var dirs_music_loaded :Dictionary[String,PackedStringArray]={}
 var all_music_files_loaded :PackedStringArray
 var artists_files :Dictionary[String,PackedStringArray]
+var current_queue_playing :PackedStringArray
 
 var audio : AudioStreamPlayer
 
@@ -16,6 +17,7 @@ var shuffle_queue :PackedStringArray
 var is_shuffle_enabled : bool = false
 
 var audio_converter :AudioConverter
+
 
 func _ready() -> void:
 	audio = AudioStreamPlayer.new()
@@ -30,9 +32,9 @@ func _ready() -> void:
 	Console.add_command("play_audio",on_audio_file_clicked,["file"],1)
 	Console.add_command("reload",get_tree().reload_current_scene)
 	UserPrefs.load_config()
+	updated_directories.emit()
 
-
-func add_directory(dir_selected : String, files_in_dir : PackedStringArray) -> void:
+func add_directory(dir_selected : String, files_in_dir : PackedStringArray, should_emit_signal :bool= true) -> void:
 	if dir_selected in dirs_music_loaded.keys():
 		remove_dir(dir_selected)
 	
@@ -44,7 +46,7 @@ func add_directory(dir_selected : String, files_in_dir : PackedStringArray) -> v
 	
 	dirs_music_loaded[dir_selected] = music_files
 	update_all_music_files_loaded()
-	updated_directories.emit()
+	if should_emit_signal: updated_directories.emit()
 
 func remove_dir(dir_selected : String) -> void:
 	if !dir_selected in dirs_music_loaded.keys(): return

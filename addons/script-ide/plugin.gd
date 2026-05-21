@@ -15,17 +15,17 @@ extends EditorPlugin
 const BUILT_IN_SCRIPT: StringName = &"::GDScript"
 const QUICK_OPEN_INTERVAL: int = 400
 
-const MULTILINE_TAB_BAR: PackedScene = preload("uid://cy0golessm8us")
-const MultilineTabBar := preload("uid://bepujpexsqsfn")
+const MULTILINE_TAB_BAR: PackedScene = preload("uid://bken27i2r3o0g")
+const MultilineTabBar := preload("uid://dwfkctl5dxgd2")
 
-const QUICK_OPEN_SCENE: PackedScene = preload("uid://da26wp8rc2n0s")
-const QuickOpenPopup := preload("uid://btarmioi5svqa")
+const QUICK_OPEN_SCENE: PackedScene = preload("uid://ru4s0n6swm5i")
+const QuickOpenPopup := preload("uid://btlq1m6kgrtuy")
 
-const OVERRIDE_SCENE: PackedScene = preload("uid://dx4go87acgi3s")
-const OverridePopup := preload("uid://cuqnntott1nlg")
+const OVERRIDE_SCENE: PackedScene = preload("uid://1ln6cmuaia5f")
+const OverridePopup := preload("uid://bkq8cbqd5y2dd")
 
-const OUTLINE_CONTAINER_SCENE: PackedScene = preload("uid://xr5hdmq1aelv")
-const OutlineContainer := preload("uid://c3f13d4bx2ep1")
+const OUTLINE_CONTAINER_SCENE: PackedScene = preload("uid://ck63poq78nakf")
+const OutlineContainer := preload("uid://ofmvd5e6anuq")
 
 const SplitCodeEdit := preload("uid://cycj0xoygcfsd")
 

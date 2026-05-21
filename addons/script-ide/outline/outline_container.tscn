@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://xr5hdmq1aelv"]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://addons/script-ide/outline/outline_container.gd" id="1_w4vhe"]
 
