@@ -128,8 +128,7 @@ func create_button(file : String, callable :Callable= music_button_call, this_is
 	button.label.theme = (get_parent().get_parent() as Control).theme
 	
 	button.button_down.connect(callable.bind(file))
-	if this_is_a_music_file:
-		button.button_down.connect(highlight_track_playing)
+	#if this_is_a_music_file: button.button_down.connect(highlight_track_playing.bind(current_sub_grid_container))
 	
 	if add_gradient: button.viewport_container.material = shader_material.duplicate(true)
 	

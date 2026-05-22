@@ -2,13 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://dcfvjgegfphmm" path="res://assets/textures/button_00.png" id="1_2cqfq"]
 [ext_resource type="SystemFont" uid="uid://d0isnreglbkdf" path="res://assets/misc/windows_font.tres" id="1_074og"]
-[ext_resource type="Script" uid="uid://bjo2lqvp75dq2" path="res://scripts/backend/handle_theme.gd" id="2_074og"]
+[ext_resource type="Script" path="res://scripts/backend/handle_theme.gd" id="2_074og"]
 [ext_resource type="Texture2D" uid="uid://tkf7f4de7qad" path="res://assets/textures/background_00.png" id="2_yaehf"]
 [ext_resource type="Shader" path="res://shaders/background_0.gdshader" id="3_074og"]
 [ext_resource type="Script" uid="uid://bwsid3tq3qkcd" path="res://scripts/frontend/music_grid_display.gd" id="4_cegan"]
 [ext_resource type="Script" uid="uid://jscetr4jr0wj" path="res://scripts/backend/extra_label_settings_resource.gd" id="5_82xsv"]
 [ext_resource type="Script" uid="uid://cnuytbeymawie" path="res://scripts/visual/transition_to_screen.gd" id="6_getpj"]
-[ext_resource type="Script" uid="uid://gdrufqkfjbvl" path="res://scripts/frontend/display_music_info.gd" id="7_ryguw"]
+[ext_resource type="Script" path="res://scripts/frontend/display_music_info.gd" id="7_ryguw"]
 [ext_resource type="Script" uid="uid://cpvidt3y5iq4r" path="res://scripts/frontend/timeline.gd" id="8_d13ii"]
 [ext_resource type="Script" uid="uid://cgna28hakso53" path="res://scripts/frontend/artist_sort_button.gd" id="8_lswn8"]
 [ext_resource type="Material" uid="uid://dawdpb57ngxq" path="res://shaders/text_gradient_fade_into_background.material" id="9_1u8w0"]
@@ -155,6 +155,10 @@ toggled = Color(0.3217278, 0.321728, 0.32172796, 1)
 disable = Color(0, 0, 0.30588236, 1)
 
 [sub_resource type="Resource" id="Resource_a6jrf"]
+script = ExtResource("5_82xsv")
+horizontal = 0
+
+[sub_resource type="Resource" id="Resource_xuqvo"]
 script = ExtResource("5_82xsv")
 horizontal = 0
 
@@ -639,7 +643,7 @@ anchors_preset = -1
 anchor_right = 0.7890625
 anchor_bottom = 0.92
 offset_right = -162.0
-text = "fruitcup music center a0.1"
+text = "fruitcup music center a0.2"
 script = ExtResource("18_a6jrf")
 metadata/_edit_lock_ = true
 metadata/_edit_use_anchors_ = true
@@ -823,11 +827,27 @@ grow_vertical = 2
 
 [node name="WMCButton" type="Button" parent="settings/ColorRect2/VBoxContainer" unique_id=162727221]
 layout_mode = 2
-tooltip_text = "Uses Titles from the Song's Metadata instead of Filename
+tooltip_text = "Checks if Filename is formatted as:
+[artist] - [title]
 
-Requires a beefy PC."
+This cannot be used for Artist nor Album sorting."
 toggle_mode = true
-text = "Use Titles instead of File Name"
+text = "Check Filename for Artist and Title"
+script = ExtResource("19_0odxb")
+setting = "use_filename_artist"
+value_on = true
+value_off = false
+label_settings = SubResource("LabelSettings_lrokg")
+extra_label_settings = SubResource("Resource_0odxb")
+viewport_padding = Vector2(64, 0)
+
+[node name="WMCButton2" type="Button" parent="settings/ColorRect2/VBoxContainer" unique_id=706820406]
+layout_mode = 2
+tooltip_text = "Uses titles from the Song's Metadata instead of Filename for List
+
+Requires a beefy PC"
+toggle_mode = true
+text = "Use Titles instead of Filename"
 script = ExtResource("19_0odxb")
 setting = "use_metadata_title_for_buttons"
 value_on = true
@@ -972,6 +992,7 @@ offset_bottom = 193.0
 text = "Add Directory      "
 script = ExtResource("11_lswn8")
 fire_on_button_down = false
+use_theme_font = false
 
 [node name="FileDialog" type="FileDialog" parent="setup/add_directory" unique_id=2104826915]
 oversampling_override = 1.0
@@ -989,6 +1010,7 @@ offset_bottom = 216.0
 text = "Remove Directory"
 script = ExtResource("11_lswn8")
 fire_on_button_down = false
+use_theme_font = false
 
 [node name="finish_setup" type="Button" parent="setup" unique_id=887708932 node_paths=PackedStringArray("transition_from", "transition_to")]
 layout_mode = 1
@@ -1001,6 +1023,7 @@ text = "Finish Setup                 "
 script = ExtResource("6_getpj")
 transition_from = NodePath("..")
 transition_to = NodePath("../../main")
+use_theme_font = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="setup" unique_id=237898466]
 layout_mode = 0
@@ -1117,6 +1140,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE."
+extra_label_settings = SubResource("Resource_xuqvo")
 viewport_padding = Vector2(16, 0)
 
 [node name="taglibsharp" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=418306614 node_paths=PackedStringArray("attribution_display")]
@@ -1629,6 +1653,7 @@ necessary.  Here is a sample; alter the names:
 
 That's all there is to it!
 "
+extra_label_settings = SubResource("Resource_xuqvo")
 viewport_padding = Vector2(8, 0)
 
 [node name="scriptide" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=1111476791 node_paths=PackedStringArray("attribution_display")]
@@ -1659,6 +1684,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE."
+extra_label_settings = SubResource("Resource_xuqvo")
 viewport_padding = Vector2(8, 0)
 
 [node name="console" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=849171588 node_paths=PackedStringArray("attribution_display")]
@@ -1684,6 +1710,7 @@ PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIG
 HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+extra_label_settings = SubResource("Resource_xuqvo")
 viewport_padding = Vector2(8, 0)
 
 [node name="asynchelper" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=591174310 node_paths=PackedStringArray("attribution_display")]
@@ -1692,6 +1719,7 @@ text = "AsyncHelper"
 script = ExtResource("15_kq58d")
 attribution_display = NodePath("../../../attribution_background/attribution_text")
 attribution_text = "\"AsyncHelper\" - farhil https://www.reddit.com/r/godot/comments/173q971/comment/k455bzu/"
+extra_label_settings = SubResource("Resource_xuqvo")
 viewport_padding = Vector2(16, 0)
 
 [node name="ffmpegcore" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=1305739752 node_paths=PackedStringArray("attribution_display")]
@@ -1722,11 +1750,12 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE."
+extra_label_settings = SubResource("Resource_xuqvo")
 viewport_padding = Vector2(16, 0)
 
 [node name="efdsuids" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=696943731 node_paths=PackedStringArray("attribution_display")]
 layout_mode = 2
-text = "FFMpegCore"
+text = "ef ds uids"
 script = ExtResource("15_kq58d")
 attribution_display = NodePath("../../../attribution_background/attribution_text")
 attribution_text = "\"ef-ds-uids\" - Maaack https://github.com/Maaack/ef-ds-uids
@@ -1750,6 +1779,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE."
+extra_label_settings = SubResource("Resource_xuqvo")
 viewport_padding = Vector2(16, 0)
 
 [node name="textgradientshader" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=1360828393 node_paths=PackedStringArray("attribution_display")]
@@ -1763,6 +1793,7 @@ attribution_text = "Text Gradient Shader is a heavily modified version of these 
 \"Unnamed Text Gradient Shader\" - Sintinium https://www.reddit.com/r/godot/comments/bajpkq/comment/ekdxcob/
 
 "
+extra_label_settings = SubResource("Resource_xuqvo")
 viewport_padding = Vector2(16, 0)
 
 [node name="wavelineshader" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=1284606784 node_paths=PackedStringArray("attribution_display")]
@@ -1894,6 +1925,7 @@ express Statement of Purpose.
     party to this document and has no duty or obligation with respect to
     this CC0 or use of the Work.
 "
+extra_label_settings = SubResource("Resource_xuqvo")
 viewport_padding = Vector2(16, 0)
 
 [node name="notosans" type="Button" parent="attributions/attribution_button_background/attribution_button_container" unique_id=2139531870 node_paths=PackedStringArray("attribution_display")]
@@ -1996,6 +2028,7 @@ INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
 DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
 OTHER DEALINGS IN THE FONT SOFTWARE."
+extra_label_settings = SubResource("Resource_xuqvo")
 viewport_padding = Vector2(16, 0)
 
 [node name="startup" type="Control" parent="." unique_id=1537037399]

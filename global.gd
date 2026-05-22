@@ -87,6 +87,8 @@ func on_audio_file_clicked(file : String) -> void:
 	if file.is_empty(): return
 	if !FileAccess.file_exists(file): return
 	if file == current_track_path:
+		audio.volume_db = 0
+		audio.stream_paused = false
 		audio.play()
 		return
 	

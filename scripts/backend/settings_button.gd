@@ -19,3 +19,4 @@ func on_press() -> void:
 	UserPrefs.settings[setting] = (value_on if button_pressed else value_off)
 	label.text = (init_string if !button_pressed else init_string + " [On]")
 	force_update_viewport()
+	Global.updated_directories.emit()

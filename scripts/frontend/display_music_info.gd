@@ -49,9 +49,22 @@ func get_metadata(data : MetadataResource, default_title : String) -> void:
 		artist_full += artist + (" " if artist_index <= 1 || artist_index >= artists.size() - 1 else ", ")
 		artist_index += 1
 	
-	current_metadata["title"] = (title if !title.is_empty() else default_title)
 	current_metadata["album"] = (album if !album.is_empty() else "")
-	current_metadata["artist"] = (artist_full if !artist_full.is_empty() else UNKNOWN_ARTIST)
+	
+	if artist_full.is_empty() && UserPrefs.settings.get("use_filename_artist",false):
+		var idx :int= default_title.find(" -")
+		
+		if idx != -1:
+			artist_full = default_title.substr(0, idx)
+			
+			if !artist_full.is_empty():
+				title = default_title.substr(idx + 2)
+				if title.begins_with(" "):
+					title = title.substr(1)
+	
+	current_metadata["artist"] = (artist_full if !title.is_empty() else UNKNOWN_ARTIST)
+	current_metadata["title"] = (title if !title.is_empty() else default_title)
+	
 	current_metadata["art"] = art
 	update_cover_art_now = false
 

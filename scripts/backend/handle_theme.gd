@@ -13,3 +13,6 @@ func _ready() -> void:
 func set_font(font : Font) -> void:
 	theme.default_font = font
 	theme.set("Button/fonts/font",font)
+
+func force_update() -> void:
+	Global.updated_directories.emit()
