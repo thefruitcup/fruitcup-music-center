@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://1hgbb21yb22t"]
+
+[ext_resource type="Shader" path="res://shaders/text_gradient.gdshader" id="1_yohae"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_yohae")
+shader_parameter/intensity = 0.99
+shader_parameter/colorH = Color(0.6672634, 0.6908616, 0.7143634, 1)
+shader_parameter/colorV = Color(1, 1, 1, 1)
+shader_parameter/modulate = Color(1, 1, 1, 1)

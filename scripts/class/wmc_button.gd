@@ -65,7 +65,7 @@ func _create_label_viewport() -> void:
 	
 	label.text = text
 	label.label_settings = label_settings
-	label.material = extra_label_settings.material.duplicate(true)
+	if extra_label_settings.material: label.material = extra_label_settings.material.duplicate(true)
 	
 	if use_theme_font: label.add_theme_font_override("font",get_theme_default_font())
 	

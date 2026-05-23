@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://scripts/frontend/display_music_info.gd" id="7_ryguw"]
 [ext_resource type="Script" uid="uid://cpvidt3y5iq4r" path="res://scripts/frontend/timeline.gd" id="8_d13ii"]
 [ext_resource type="Script" uid="uid://cgna28hakso53" path="res://scripts/frontend/artist_sort_button.gd" id="8_lswn8"]
-[ext_resource type="Material" uid="uid://dawdpb57ngxq" path="res://shaders/text_gradient_fade_into_background.material" id="9_1u8w0"]
 [ext_resource type="Script" uid="uid://c8dcqtwqha3wx" path="res://scripts/frontend/audio_controls.gd" id="10_0odxb"]
 [ext_resource type="Texture2D" uid="uid://dwrboxkjypke8" path="res://assets/textures/cover_art_shadow.png" id="10_82xsv"]
 [ext_resource type="Texture2D" uid="uid://bp8o2xfrjemp6" path="res://icon.svg" id="11_cegan"]
@@ -23,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://d2uhed2bjxatl" path="res://assets/audio/fmc_startup.ogg" id="14_qsp4k"]
 [ext_resource type="Script" uid="uid://e6lpj32opff1" path="res://scripts/visual/attribution_button.gd" id="15_kq58d"]
 [ext_resource type="Texture2D" uid="uid://3lrs4ccjpwjh" path="res://assets/textures/icon_processed_no_tex.png" id="16_seu75"]
+[ext_resource type="Material" uid="uid://1hgbb21yb22t" path="res://shaders/text_gradient_fade_into_background.tres" id="17_xuqvo"]
 [ext_resource type="Script" path="res://scripts/visual/set_label_font_to_global.gd" id="18_a6jrf"]
 [ext_resource type="Script" path="res://scripts/backend/settings_button.gd" id="19_0odxb"]
 [ext_resource type="Script" path="res://scripts/visual/scale_with_characters.gd" id="19_xuqvo"]
@@ -621,7 +621,7 @@ transition_from = NodePath("../..")
 transition_to = NodePath("../../../currentlyplaying")
 
 [node name="current_version" type="SubViewportContainer" parent="main" unique_id=873614110]
-material = ExtResource("9_1u8w0")
+material = ExtResource("17_xuqvo")
 layout_mode = 0
 anchor_right = 0.279476
 anchor_bottom = 0.048543688
@@ -649,7 +649,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_use_anchors_ = true
 
 [node name="looking_at" type="SubViewportContainer" parent="main" unique_id=1616643850]
-material = ExtResource("9_1u8w0")
+material = ExtResource("17_xuqvo")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.41921398

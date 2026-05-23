@@ -21,7 +21,7 @@ var current_metadata :Dictionary[String,Variant] = {
 }
 
 func _ready() -> void:
-	for file : String in DirAccess.get_files_at(DEFAULT_COVERS_PATH):
+	for file : String in ResourceLoader.list_directory(DEFAULT_COVERS_PATH):
 		if !file.ends_with(".png"): continue
 		
 		default_album_covers.append(file)

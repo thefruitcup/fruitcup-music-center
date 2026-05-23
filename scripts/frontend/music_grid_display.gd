@@ -9,7 +9,7 @@ const MUSIC_BUTTON_NORMAL_FONT_SIZE :int= 16
 const MUSIC_BUTTON_HOVER_FONT_SIZE :int= 17
 
 @onready var grid_container :GridContainer= get_node("GridContainer")
-@onready var shader_material : ShaderMaterial = preload("res://shaders/text_gradient_fade_into_background.material")
+@onready var shader_material : ShaderMaterial = preload("res://shaders/text_gradient_fade_into_background.tres")
 @onready var batch_creation_timer :Timer= get_node("batch_creation_timer")
 
 @export var extra_label_settings : LabelExtraSettings = LabelExtraSettings.new()
