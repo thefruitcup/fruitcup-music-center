@@ -28,8 +28,9 @@ Linux Support will most likely be limited as I do not have Linux, but the progra
   <li>Directory Addition & Removal</li>
   <li>Music Information</li>
   <li>MP3, WAV & OGG Support</li>
-  <li>Now Playing Screen *Not in Alpha 1</li>
-  <li>Album Art & Default Album Art *Not in Alpha 1</li>
+  <li>Now Playing Screen</li>
+  <li>Album Art & Default Album Art</li>
+  <li>Sorting (Artist & Album)</li>
 </ul>
 
 ### To Be Added
@@ -43,7 +44,7 @@ Linux Support will most likely be limited as I do not have Linux, but the progra
 </ul>
 
 # How to Compile
-First you'll need to download Godot Engine No-UID v4.6 Mono:<br>
+First you'll need to download Godot Engine No-UID v4.6.3 Mono:<br>
 https://github.com/carlosfruitcup/godot-no-uids
 
 Clone the project:<br>
