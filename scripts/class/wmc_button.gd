@@ -12,6 +12,7 @@ class_name WMCButton
 @export var texture : Texture
 @export var viewport_padding :Vector2= Vector2.ZERO
 @export var use_theme_font :bool= true
+@export var use_theme_hover_button :bool= true
 @onready var viewport_container :SubViewportContainer
 @onready var viewport :SubViewport
 @onready var label : Label
@@ -32,6 +33,9 @@ func _ready() -> void:
 	if fire_on_button_up: button_up.connect(on_press)
 	mouse_entered.connect(on_mouse_hover)
 	mouse_exited.connect(on_mouse_left)
+	
+	if !use_theme_hover_button:
+		add_theme_stylebox_override("hover",StyleBoxEmpty.new())
 	
 	#i guess godot is updating the viewport while it's not visible or doing some funky stuff that it's very obvious that it's not being cleared
 	#so we gotta force update it
@@ -89,6 +93,7 @@ func _create_texture() -> void:
 	texture_rect = TextureRect.new()
 	texture_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	texture_rect.texture = texture
+	texture_rect.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 	texture_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(texture_rect)
 

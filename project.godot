@@ -22,9 +22,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Console="*res://addons/console/console.gd"
 UserPrefs="*res://save_user_perfs.gd"
 Global="*res://global.gd"
+Console="*res://addons/console/console.gd"
 
 [debug]
 

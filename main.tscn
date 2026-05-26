@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://bd553n1l6thbm"]
 
-[ext_resource type="Texture2D" uid="uid://dcfvjgegfphmm" path="res://assets/textures/button_00.png" id="1_2cqfq"]
 [ext_resource type="SystemFont" uid="uid://d0isnreglbkdf" path="res://assets/misc/windows_font.tres" id="1_074og"]
-[ext_resource type="Script" path="res://scripts/backend/handle_theme.gd" id="2_074og"]
+[ext_resource type="Script" uid="uid://txmfna7bs8p" path="res://scripts/backend/handle_theme.gd" id="2_074og"]
+[ext_resource type="Texture2D" uid="uid://xag02hmmyguj" path="res://assets/textures/button_01.png" id="2_xuqvo"]
 [ext_resource type="Texture2D" uid="uid://tkf7f4de7qad" path="res://assets/textures/background_00.png" id="2_yaehf"]
-[ext_resource type="Shader" path="res://shaders/background_0.gdshader" id="3_074og"]
+[ext_resource type="Shader" uid="uid://d33wn15njc1jx" path="res://shaders/background_0.gdshader" id="3_074og"]
 [ext_resource type="Script" uid="uid://bwsid3tq3qkcd" path="res://scripts/frontend/music_grid_display.gd" id="4_cegan"]
 [ext_resource type="Script" uid="uid://jscetr4jr0wj" path="res://scripts/backend/extra_label_settings_resource.gd" id="5_82xsv"]
 [ext_resource type="Script" uid="uid://cnuytbeymawie" path="res://scripts/visual/transition_to_screen.gd" id="6_getpj"]
-[ext_resource type="Script" path="res://scripts/frontend/display_music_info.gd" id="7_ryguw"]
+[ext_resource type="Script" uid="uid://b48o7b7fax3t5" path="res://scripts/frontend/display_music_info.gd" id="7_ryguw"]
 [ext_resource type="Script" uid="uid://cpvidt3y5iq4r" path="res://scripts/frontend/timeline.gd" id="8_d13ii"]
 [ext_resource type="Script" uid="uid://cgna28hakso53" path="res://scripts/frontend/artist_sort_button.gd" id="8_lswn8"]
 [ext_resource type="Script" uid="uid://c8dcqtwqha3wx" path="res://scripts/frontend/audio_controls.gd" id="10_0odxb"]
@@ -23,9 +23,10 @@
 [ext_resource type="Script" uid="uid://e6lpj32opff1" path="res://scripts/visual/attribution_button.gd" id="15_kq58d"]
 [ext_resource type="Texture2D" uid="uid://3lrs4ccjpwjh" path="res://assets/textures/icon_processed_no_tex.png" id="16_seu75"]
 [ext_resource type="Material" uid="uid://1hgbb21yb22t" path="res://shaders/text_gradient_fade_into_background.tres" id="17_xuqvo"]
-[ext_resource type="Script" path="res://scripts/visual/set_label_font_to_global.gd" id="18_a6jrf"]
-[ext_resource type="Script" path="res://scripts/backend/settings_button.gd" id="19_0odxb"]
-[ext_resource type="Script" path="res://scripts/visual/scale_with_characters.gd" id="19_xuqvo"]
+[ext_resource type="Script" uid="uid://bom112p13dxsv" path="res://scripts/visual/set_label_font_to_global.gd" id="18_a6jrf"]
+[ext_resource type="Script" uid="uid://c34uervtxt104" path="res://scripts/backend/settings_button.gd" id="19_0odxb"]
+[ext_resource type="Script" uid="uid://b4e864o2hgf0i" path="res://scripts/visual/scale_with_characters.gd" id="19_xuqvo"]
+[ext_resource type="Texture2D" uid="uid://dwdp44hmbsxvs" path="res://assets/textures/button_pause.png" id="21_qsp4k"]
 [ext_resource type="Script" uid="uid://q82a746qw7gi" path="res://scripts/backend/get_cover_art_from_main.gd" id="23_d13ii"]
 [ext_resource type="Script" uid="uid://b4jsp5ews62c0" path="res://scripts/frontend/currently_playing_display_music_info.gd" id="24_1u8w0"]
 
@@ -34,9 +35,8 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f4v3o"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_udj8p"]
-texture = ExtResource("1_2cqfq")
-region_rect = Rect2(7, 0, 499, 103)
-draw_center = false
+texture = ExtResource("2_xuqvo")
+region_rect = Rect2(8, 4, 1014, 507)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8v665"]
 
@@ -140,11 +140,12 @@ font_size = 40
 shadow_color = Color(0, 0, 0, 0.37254903)
 shadow_offset = Vector2(7.18, 5.06)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qsp4k"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_lrokg"]
 
 [sub_resource type="Resource" id="Resource_8v665"]
 script = ExtResource("5_82xsv")
-normal = Color(0.26666668, 0.49019608, 1, 1)
 disable = Color(0, 0, 0.30588236, 1)
 
 [sub_resource type="Resource" id="Resource_0odxb"]
@@ -471,6 +472,7 @@ label_settings = SubResource("LabelSettings_0odxb")
 extra_label_settings = SubResource("Resource_lswn8")
 viewport_padding = Vector2(32, 16)
 use_theme_font = false
+use_theme_hover_button = false
 
 [node name="artists" type="Button" parent="main/ScrollContainer2/HBoxContainer" unique_id=70880704 node_paths=PackedStringArray("looking_at_text", "music_grid_display")]
 process_priority = -5
@@ -485,6 +487,7 @@ label_settings = SubResource("LabelSettings_0odxb")
 extra_label_settings = SubResource("Resource_lswn8")
 viewport_padding = Vector2(32, 16)
 use_theme_font = false
+use_theme_hover_button = false
 
 [node name="albums" type="Button" parent="main/ScrollContainer2/HBoxContainer" unique_id=449499335 node_paths=PackedStringArray("looking_at_text", "music_grid_display")]
 modulate = Color(1, 1, 1, 0.35686275)
@@ -499,6 +502,7 @@ label_settings = SubResource("LabelSettings_0odxb")
 extra_label_settings = SubResource("Resource_lswn8")
 viewport_padding = Vector2(32, 16)
 use_theme_font = false
+use_theme_hover_button = false
 
 [node name="music_grid_display" type="ScrollContainer" parent="main" unique_id=453480484]
 process_priority = -4
@@ -533,6 +537,7 @@ script = ExtResource("6_getpj")
 transition_from = NodePath("..")
 transition_to = NodePath("../../settings")
 use_theme_font = false
+use_theme_hover_button = false
 metadata/_edit_use_anchors_ = true
 
 [node name="cover_art" type="TextureRect" parent="main" unique_id=2136239040]
@@ -684,29 +689,34 @@ metadata/_edit_use_anchors_ = true
 
 [node name="audio_controls" type="HBoxContainer" parent="main" unique_id=1508350416]
 custom_minimum_size = Vector2(16, 16)
-layout_mode = 0
-anchor_left = 0.70742357
-anchor_top = 0.9184466
-anchor_right = 0.9781659
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5716288
+anchor_top = 0.8985826
+anchor_right = 0.91921395
 anchor_bottom = 0.98058254
+offset_left = 0.3880005
+offset_top = 0.22998047
 theme_override_constants/separation = 4
 script = ExtResource("10_0odxb")
 metadata/_edit_use_anchors_ = true
 
 [node name="pause" type="Button" parent="main/audio_controls" unique_id=2128247712]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 tooltip_text = "Resume/Pause"
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qsp4k")
 text = "||"
 script = ExtResource("11_lswn8")
 fire_on_button_down = false
 label_settings = SubResource("LabelSettings_lrokg")
 extra_label_settings = SubResource("Resource_8v665")
+texture = ExtResource("21_qsp4k")
 use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="stop" type="Button" parent="main/audio_controls" unique_id=157801093]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 tooltip_text = "Stop"
 text = "[ ]"
@@ -718,7 +728,7 @@ use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="skipForward" type="Button" parent="main/audio_controls" unique_id=1293916593]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 tooltip_text = "Next Track"
 text = ">"
@@ -730,7 +740,7 @@ use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="skipBack" type="Button" parent="main/audio_controls" unique_id=650340941]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 tooltip_text = "Previous Track"
 text = "<"
@@ -742,7 +752,7 @@ use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="shuffle" type="Button" parent="main/audio_controls" unique_id=726832527]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 tooltip_text = "Shuffle"
 theme_override_colors/font_focus_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
@@ -757,7 +767,7 @@ use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="volumeup" type="Button" parent="main/audio_controls" unique_id=21623615]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 tooltip_text = "Volume Up"
 text = "+"
@@ -769,7 +779,7 @@ use_theme_font = false
 metadata/_edit_use_anchors_ = true
 
 [node name="volumedown" type="Button" parent="main/audio_controls" unique_id=1299734792]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(42, 42)
 layout_mode = 2
 tooltip_text = "Volume Down"
 text = "-"

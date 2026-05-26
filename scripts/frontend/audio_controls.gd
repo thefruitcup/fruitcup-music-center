@@ -3,13 +3,16 @@ extends HBoxContainer
 const MAX_SHUFFLE_ATTEMPTS :int= 4
 const RESTART_MUSIC_TIME :float= 2
 
-@onready var pause_btn :Button= get_node("pause")
-@onready var stop_btn :Button= get_node("stop")
-@onready var skipF_btn :Button= get_node("skipForward")
-@onready var skipB_btn :Button= get_node("skipBack")
-@onready var shuffle_btn :Button= get_node("shuffle")
-@onready var volume_up_btn :Button= get_node("volumeup")
-@onready var volume_down_btn :Button= get_node("volumedown")
+@onready var tex_pause_btn_resume :Texture2D= preload("res://assets/textures/button_resume.png")
+@onready var tex_pause_btn_pause :Texture2D= preload("res://assets/textures/button_pause.png")
+
+@onready var pause_btn :WMCButton= get_node("pause")
+@onready var stop_btn :WMCButton= get_node("stop")
+@onready var skipF_btn :WMCButton= get_node("skipForward")
+@onready var skipB_btn :WMCButton= get_node("skipBack")
+@onready var shuffle_btn :WMCButton= get_node("shuffle")
+@onready var volume_up_btn :WMCButton= get_node("volumeup")
+@onready var volume_down_btn :WMCButton= get_node("volumedown")
 
 func _ready() -> void:
 	pause_btn.button_down.connect(pause_audio)
@@ -25,9 +28,11 @@ func _ready() -> void:
 
 func pause_audio() -> void:
 	if !Global.audio.stream_paused:
+		pause_btn.texture_rect.texture = tex_pause_btn_pause
 		var t :PropertyTweener= create_tween().tween_property(Global.audio,"volume_db",-80,0.25)
 		await  t.finished
 	else:
+		pause_btn.texture_rect.texture = tex_pause_btn_resume
 		create_tween().tween_property(Global.audio,"volume_db",0,0.25)
 	
 	Global.audio.stream_paused = !Global.audio.stream_paused
