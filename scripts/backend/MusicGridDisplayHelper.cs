@@ -25,12 +25,12 @@ public partial class MusicGridDisplayHelper : Node
 		Instance = this;
 
 		artist_batch_timer = new Godot.Timer();
-		artist_batch_timer.WaitTime = 0.025;
+		artist_batch_timer.WaitTime = 0.005;
 		artist_batch_timer.Autostart = false;
 		AddChild(artist_batch_timer);
 
 		album_batch_timer = new Godot.Timer();
-		album_batch_timer.WaitTime = 0.025;
+		album_batch_timer.WaitTime = 0.005;
 		album_batch_timer.Autostart = false;
 		AddChild(album_batch_timer);
 
@@ -63,7 +63,7 @@ public partial class MusicGridDisplayHelper : Node
 		Dictionary<string, Array<String>> artist_files = (Dictionary<string, Array<string>>)global.Get("artists_files");
 
 
-		for(int i = 0; i < 16; i++)
+		for(int i = 0; i < 4; i++)
 		{
 			if(artist_global_index > files_to_load.Count() - 1) break;
 			var file = files_to_load[artist_global_index];
@@ -123,7 +123,7 @@ public partial class MusicGridDisplayHelper : Node
 		album_batch_timer.Timeout += () => ReturnAlbumTask(files_to_load);
 	}
 
-    static public Button CreateButton(string file, Boolean use_metadata)
+	static public Button CreateButton(string file, Boolean use_metadata)
 	{
 		Button button = new Button();
 		button.SetScript(GD.Load<Script>("res://scripts/class/wmc_button.gd"));

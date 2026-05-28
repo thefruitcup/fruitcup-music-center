@@ -96,7 +96,7 @@ func _on_batch_creation_timer_timeout() -> void:
 func music_button_hover(hovered : bool, button : WMCButton) -> void:
 	button.label.label_settings.font_size = (MUSIC_BUTTON_HOVER_FONT_SIZE if hovered else MUSIC_BUTTON_NORMAL_FONT_SIZE)
 	
-	var current_shader_material :ShaderMaterial= button.viewport_container.material
+	var current_shader_material :ShaderMaterial= button.label_container.material
 	if not current_shader_material: return
 	
 	current_shader_material.set_shader_parameter("modulate",button.label.modulate)
@@ -116,7 +116,6 @@ func create_button(file : String, callable :Callable= music_button_call, this_is
 	button.fire_on_button_up = false
 	button.button_hovered_function = music_button_hover
 	button.extra_label_settings = extra_label_settings
-	button.viewport_padding = Vector2(16,0)
 		
 	current_sub_grid_container.add_child(button)
 	
@@ -130,7 +129,7 @@ func create_button(file : String, callable :Callable= music_button_call, this_is
 	button.button_down.connect(callable.bind(file))
 	#if this_is_a_music_file: button.button_down.connect(highlight_track_playing.bind(current_sub_grid_container))
 	
-	if add_gradient: button.viewport_container.material = shader_material.duplicate(true)
+	if add_gradient: button.label_container.material = shader_material.duplicate(true)
 	
 	if (current_sub_grid_container.get_child_count() == MAX_SONGS_PER_COLUMN):
 		current_sub_grid_container = GridContainer.new()

@@ -10,11 +10,11 @@ class_name WMCButton
 @export var label_settings : LabelSettings = LabelSettings.new()
 @export var extra_label_settings :LabelExtraSettings= LabelExtraSettings.new()
 @export var texture : Texture
-@export var viewport_padding :Vector2= Vector2.ZERO
+@export var use_button_size :bool= false
 @export var use_theme_font :bool= true
 @export var use_theme_hover_button :bool= true
-@onready var viewport_container :SubViewportContainer
-@onready var viewport :SubViewport
+@onready var label_container :Control
+
 @onready var label : Label
 @onready var texture_rect:TextureRect
 
@@ -23,7 +23,6 @@ class_name WMCButton
 var button_hovered_function : Callable
 
 func _ready() -> void:
-	
 	if texture: _create_texture()
 	else: _create_label_viewport()
 	
@@ -36,30 +35,15 @@ func _ready() -> void:
 	
 	if !use_theme_hover_button:
 		add_theme_stylebox_override("hover",StyleBoxEmpty.new())
-	
-	#i guess godot is updating the viewport while it's not visible or doing some funky stuff that it's very obvious that it's not being cleared
-	#so we gotta force update it
-	visibility_changed.connect(force_update_viewport)
 
 #Not intended for outside use
 func _create_label_viewport() -> void:
-	if viewport: return
+	if label_container: return
 	
-	#doing all of this so text can look how it does in WMC, as putting a gradient shader applies it on the font's texture
-	#not the text itself
-	#this does (fortunately?) give us that blurry look when we fullscreen the window though
-	viewport = SubViewport.new()
-	viewport.transparent_bg = true
-	viewport.disable_3d = true
-	
-	viewport_container =SubViewportContainer.new()
-	viewport_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
-	viewport_container.add_child(viewport)
-	
-	viewport.size = size + viewport_padding
-	viewport_container.size = size + viewport_padding
-	custom_minimum_size = viewport_container.size
+	label_container = Control.new()
+	label_container.position = Vector2.ZERO
+	label_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(label_container)
 	
 	label = Label.new()
 	label.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -81,11 +65,11 @@ func _create_label_viewport() -> void:
 	add_theme_color_override("font_hover_pressed_color",Color.TRANSPARENT)
 	add_theme_color_override("font_pressed_color",Color.TRANSPARENT)
 	add_theme_color_override("font_outline_color",Color.TRANSPARENT)
-	viewport.add_child(label)
-	add_child(viewport_container)
+	label_container.add_child(label)
 	
-	viewport.render_target_clear_mode = SubViewport.CLEAR_MODE_ONCE
-	viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
+	await get_tree().process_frame
+	label_container.size = label.size if !use_button_size else size
+	if !use_button_size: size = label_container.size
 
 func _create_texture() -> void:
 	if texture_rect: return
@@ -105,28 +89,16 @@ func wmc_set_disabled(toggle : bool) -> void:
 
 func on_mouse_hover() -> void:
 	if disabled: return
-	if label: 
-		label.modulate = extra_label_settings.hover
-		force_update_viewport()
-	
+	if label: label.modulate = extra_label_settings.hover
 	if texture_rect:texture_rect.modulate = extra_label_settings.hover
 	if button_hovered_function: button_hovered_function.call(true, self)
 
 func on_mouse_left() -> void:
 	if disabled: return
-	if label: 
-		label.modulate = extra_label_settings.normal
-		force_update_viewport()
-	
+	if label: label.modulate = extra_label_settings.normal
 	if texture_rect: texture_rect.modulate = extra_label_settings.normal
 	if button_hovered_function: button_hovered_function.call(false, self)
 
-func force_update_viewport() -> void:
-	if !viewport: return
-	await RenderingServer.frame_post_draw
-	await RenderingServer.frame_post_draw #double up or else the non-music buttons just show up strangely
-	viewport.render_target_clear_mode = SubViewport.CLEAR_MODE_ONCE
-	viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 
 func on_press() -> void:
 	return

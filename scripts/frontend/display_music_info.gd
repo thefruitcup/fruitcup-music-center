@@ -51,19 +51,34 @@ func get_metadata(data : MetadataResource, default_title : String) -> void:
 	
 	current_metadata["album"] = (album if !album.is_empty() else "")
 	
-	if artist_full.is_empty() && UserPrefs.settings.get("use_filename_artist",false):
+	#artist & title metadata were found
+	if !artist_full.is_empty() && !title.is_empty() && UserPrefs.settings.get("clear_artist_filename",false):
+		for artist : String in artists:
+			if !title.contains(artist): continue
+			var string_substringing :String
+			
+			if title.contains(artist + " - "): string_substringing = artist + " - "
+			else: string_substringing = artist
+			
+			Console.print_multiple(title.substr(string_substringing.length()))
+			title = title.substr(string_substringing.length())
+	
+	#no artist metadata
+	if artist_full.is_empty() && UserPrefs.settings.get("use_filename_artist",false): #using strings is dumb as fuck, but i can't really think of a better way to do this without const hell
 		var idx :int= default_title.find(" -")
 		
 		if idx != -1:
 			artist_full = default_title.substr(0, idx)
 			
-			if !artist_full.is_empty():
+			if !artist_full.is_empty() && title.is_empty():
 				title = default_title.substr(idx + 2)
 				if title.begins_with(" "):
 					title = title.substr(1)
 	
+	
 	current_metadata["artist"] = (artist_full if !title.is_empty() else UNKNOWN_ARTIST)
 	current_metadata["title"] = (title if !title.is_empty() else default_title)
+	
 	
 	current_metadata["art"] = art
 	update_cover_art_now = false
